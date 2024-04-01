@@ -1,0 +1,35 @@
+.about_content {
+  padding: 40px 20px;
+  color: #fff;
+}
+
+.about_content h1 {
+  font-family: var(--lora);
+  font-size: 20px;
+  font-weight: 400;
+  line-height: 25.6px;
+}
+
+.about_content p {
+  font-family: var(--lora);
+  font-size: 16px;
+  font-weight: 300;
+  line-height: 24px;
+  text-align: left;
+  margin-top: 30px;
+}
+
+.about_content img {
+  width: 100%;
+  height: auto;
+  max-height: 466px;
+  margin-top: 30px;
+}
+
+.about_content span {
+  font-family: var(--opensans);
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 24px;
+  text-align: left;
+}
