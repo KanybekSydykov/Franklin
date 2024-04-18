@@ -1,11 +1,14 @@
+'use client'
+
 import React from 'react'
 import {Flex,Box,Text,Link} from '@chakra-ui/react'
+import { motion } from "framer-motion";
 
 const UpArrow = () => {
   return (
     <Flex
     direction={"column"}
-    gap={"40px"}
+    gap={{ base: "10px", lg: "40px" }}
     justify={"center"}
     alignItems={"center"}
     pb={"30px"}
@@ -18,7 +21,7 @@ const UpArrow = () => {
         className="up-arrow"
         fontWeight={"300"}
         fontSize={"16px"}
-        fontFamily={"var(--opensans)"}
+        fontFamily={"opensans"}
         color={"rgba(180, 180, 180, 1)"}
         lineHeight={"17px"}
         textAlign={"center"}
@@ -26,6 +29,11 @@ const UpArrow = () => {
       >
         Наверх
       </Text>
+
+    <motion.button
+      whileHover={{ scale: 1.1 }}
+          transition={{ type: "spring", stiffness: 500  }}
+    >
 
       <Link href={"#"}>
         <Box
@@ -59,16 +67,24 @@ const UpArrow = () => {
           </svg>
         </Box>
       </Link>
-    </Box>
+    </motion.button>
 
-    <Text
+    </Box>
+<motion.div
+initial={{ opacity: 0 ,y:30}}
+animate={{ opacity: 0 ,y:30}}
+whileInView={{ opacity: 1 ,y:0}}
+>
+<Text
       fontWeight={"300"}
       fontSize={"16px"}
-      fontFamily={"var(--opensans)"}
+      fontFamily={"opensans"}
       color={"#fff"}
     >
       SINCE 2012
     </Text>
+</motion.div>
+
   </Flex>
   )
 }

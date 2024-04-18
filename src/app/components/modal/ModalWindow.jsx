@@ -15,8 +15,13 @@ import {
   Img,
 } from "@chakra-ui/react";
 
-const ModalWindow = () => {
+import { motion } from "framer-motion";
+import { useParams } from "next/navigation";
+
+const ModalWindow = ({modalProps}) => {
   const { isOpen, onOpen, onClose } = useDisclosure();
+
+  const params = useParams()
 
   const handleButtonClick = () => {
     onOpen();
@@ -24,12 +29,15 @@ const ModalWindow = () => {
     setTimeout(() => {
       onClose();
     }, 3000);
-  }
+  };
+
+
 
   return (
     <>
       <Button
-        onClick={ handleButtonClick }
+        as={motion.button}
+        onClick={handleButtonClick}
         w={"120px"}
         h={"120px"}
         p={"5px"}
@@ -39,6 +47,7 @@ const ModalWindow = () => {
         outline={"none"}
         justifyContent={"flex-end"}
         _focus={{ outline: "none" }}
+        _hover={{ bg: "transparent" }}
         color={"#fff"}
       >
         <Box>
@@ -63,20 +72,27 @@ const ModalWindow = () => {
               left: "0",
             }}
           >
-            Оставить заявку
+            {params.locale === "ru" ? "Оставить заявку" : "Leave request"}
           </Text>
         </Box>
       </Button>
 
-      <Modal isOpen={isOpen} onClose={onClose} 
-        justifyContent={"center"}
-      >
+      <Modal isOpen={isOpen} onClose={onClose} justifyContent={"center"}>
         <ModalOverlay
           background={"rgba(255, 255, 255, 0.5)"}
           backdropFilter={"blur(1px)"}
         />
+
         <ModalContent
-          mt={"35%"}
+          as={motion.div}
+          variants={{
+            hidden:{opacity: 0, y: 30},
+            visible:{opacity: 1, y: 0},
+          }}
+          initial='hidden'
+          animate= 'visible'
+          exit='hidden'
+          mt={"20%"}
           background={"var(--main-bg)"}
           p={"20px"}
           mx={"20px"}
@@ -91,11 +107,11 @@ const ModalWindow = () => {
             ms={"auto"}
           />
           <ModalBody
-                    h={"350px"}
-                    display={"flex"}
-                    justifyContent={"center"}
-                    alignItems={"center"}
-                    px={"40px"}
+            h={"350px"}
+            display={"flex"}
+            justifyContent={"center"}
+            alignItems={"center"}
+            px={"40px"}
           >
             <Flex
               flexDirection={"column"}
@@ -103,7 +119,7 @@ const ModalWindow = () => {
               alignItems={"center"}
               justifyContent={"center"}
             >
-              <Img src="/modal-icon.svg" w={"60px"} h={"60px"} />
+              <Img src={modalProps.icon} w={"60px"} h={"60px"} />
 
               <Text
                 fontFamily={"var(--opensans)"}
@@ -113,7 +129,7 @@ const ModalWindow = () => {
                 textAlign={"center"}
                 color={"#fff"}
               >
-                Спасибо
+               {params.locale === "ru" ? modalProps.title : "Thank you for your request!"}
               </Text>
               <Text
                 fontFamily={"var(--opensans)"}
@@ -123,7 +139,7 @@ const ModalWindow = () => {
                 textAlign={"center"}
                 color={"#fff"}
               >
-                Мы свяжемся с Вами в самое ближайшее время
+               {params.locale === "ru" ? modalProps.subtitle : "We will contact you soon!"}
               </Text>
             </Flex>
           </ModalBody>

@@ -1,22 +1,33 @@
 :root {
   --black: #000;
   --main-bg: linear-gradient(294.25deg, #1d1d1f 0%, #3a3b3f 143.31%);
-  --lora: var(--font-lora);
-  --cinzel: var(--font-cinzel);
-  --opensans: var(--font-opensans);
-  --noto: var(--font-noto);
 }
+
+
 
 html,
 body {
   padding: 0;
   margin: 0;
-  scroll-behavior: smooth;  
+  scroll-behavior: smooth;
 }
 
-.body{
-  background: #3a3b3f;
+html{
+  scroll-snap-type: y mandatory;
+  scroll-behavior: smooth;
+  width: 100dvw;
+  overflow-x: hidden;
 }
+
+.body {
+background: linear-gradient(294.25deg, #1D1D1F 0%, #3A3B3F 143.31%);
+
+}
+
+/* .section-snap{
+  scroll-snap-type: y mandatory;
+  overflow-y: scroll;
+} */
 
 h1,
 h2,
@@ -137,13 +148,11 @@ p {
 }
 
 .logo {
-  width: 30px;
-  height: auto;
-  max-height: 60px;
-  margin: 0 auto 0 calc(50% - 25px);
+  width: 40px;
+  height: 83px;
 }
 
-.logo img {
+.logo svg {
   width: 100%;
   height: auto;
   max-height: 100%;
@@ -158,4 +167,36 @@ p {
 
 .first-letter_services::first-letter {
   font-size: 22px;
+}
+
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 100;
+}
+
+.animated-logo {
+  animation: logo 8s ease-in-out infinite;
+  width: 5px;
+  height: 83px;
+}
+
+
+
+@keyframes logo {
+  0%,
+  100% {
+    transform: translate(0,0) rotate(0deg);
+  }
+  50% {
+    transform: translate(58px,0) rotate(0deg);
+  }
+}
+
+@media screen and (min-width: 992px) {
+  .first-letter_services::first-letter {
+    font-size: 30px;
+  }
 }

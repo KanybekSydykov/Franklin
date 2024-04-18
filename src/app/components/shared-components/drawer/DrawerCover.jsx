@@ -56,6 +56,8 @@ export default function DrawerCover() {
         ref={btnRef}
         w={"32px"}
         h={"32px"}
+        minH={"32px"}
+        minW={"32px"}
         p={"12px 8px"}
         cursor={"pointer"}
         rounded={"50%"}

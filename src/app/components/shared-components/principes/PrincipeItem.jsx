@@ -9,8 +9,8 @@ const PrincipeItem = (item) => {
       gap={"16px"}
       justifyContent={"center"}
       alignItems={"center"}
-      width={"100%"}
-      maxWidth={"246px"}
+      width={"216px"}
+      maxW={"216px"}
     >
       <Image
         src={item.src}
@@ -21,7 +21,7 @@ const PrincipeItem = (item) => {
       />
 
       <Text
-        fontFamily={"var(--opensans)"}
+        fontFamily={"opensans"}
         fontWeight={"600"}
         fontSize={"18px"}
         lineHeight={"19.8px"}
@@ -31,7 +31,7 @@ const PrincipeItem = (item) => {
         {item.text}
       </Text>
       <Text
-        fontFamily={"var(--opensans)"}
+        fontFamily={"opensans"}
         fontWeight={"300"}
         fontSize={"18px"}
         lineHeight={"19.8px"}

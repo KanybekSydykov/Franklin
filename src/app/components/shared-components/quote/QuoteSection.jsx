@@ -1,7 +1,7 @@
 import React from "react";
-import { Grid, Box, Text, Flex } from "@chakra-ui/react";
-import Link from "next/link";
-import Image from "next/image";
+import { Grid, Box, Text, Flex, Container, Img } from "@chakra-ui/react";
+import { motion } from "framer-motion";
+import { IMG_BASE_URL } from "@/api/apiConfig";
 
 const DATA = {
   images: [
@@ -13,65 +13,112 @@ const DATA = {
   author: "Коко Шанель",
 };
 
-const QuoteSection = ( { UpArrowComponent } ) => {
+const staggerGrid = {
+  initial: {
+    opacity: 0,
+    y: 200,
+  },
+  animate: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 1,
+      type: "spring",
+      staggerChildren: 0.15,
+    },
+  },
+};
+
+const QuoteSection = ({ UpArrowComponent, scrollTop, data, params }) => {
+  function getQuote() {
+    let quote = params.locale === "ru" ? data.title_ru : data.title_en;
+
+    return (quote = quote.replace(/<br\s*\/?>/gi, ""));
+  }
+
+  function getAuthor() {
+    let description =
+      params.locale === "ru" ? data.description_ru : data.description_en;
+
+    return description.replace(/<\/?p>/g, "").replace(/<br\s*\/?>/gi, "");
+  }
+
   return (
-    <Flex
-      direction={"column"}
-      justifyContent={"space-between"}
-      minH={"calc(100vh - 90px)"}
+    <Container
+      maxW={"container.xl"}
+      h={"100%"}
+      display={"flex"}
+      justifyContent={"center"}
+      alignItems={"center"}
+      pt={{ base: "120px", xl: "140px" }}
     >
-      <Box pt={"80px"}>
-        <Box px={"20px"}>
-          <Text
-            fontSize={"18px"}
-            fontFamily={"var(--lora)"}
-            color={"rgba(223, 223, 223, 1)"}
-            fontWeight={"400"}
-            textAlign={"center"}
-            lineHeight={"27px"}
+      <Flex
+        direction={"column"}
+        justifyContent={"space-between"}
+        minH={"calc(100vh - 90px)"}
+      >
+        <Box pt={{ base: "40px", lg: "80px" }}>
+          <Box
+            px={"20px"}
+            as={motion.div}
+            style={{
+              y: scrollTop,
+            }}
           >
-            {DATA.quote}
-          </Text>
-          <Text
-            fontSize={"16px"}
-            fontFamily={"var(--lora)"}
-            color={"rgba(223, 223, 223, 1)"}
-            fontWeight={"400"}
-            textAlign={"center"}
-            lineHeight={"24px"}
-            mt={"20px"}
+            <Text
+              fontSize={{ base: "18px", lg: "22px" }}
+              fontFamily={"lora"}
+              color={"rgba(223, 223, 223, 1)"}
+              fontWeight={{ base: "400", lg: "500" }}
+              textAlign={"center"}
+              lineHeight={{ base: "27px", lg: "33px" }}
+            >
+              {getQuote()}
+            </Text>
+            <Text
+              fontSize={{ base: "16px", lg: "18px" }}
+              fontFamily={"lora"}
+              color={"rgba(223, 223, 223, 1)"}
+              fontWeight={"400"}
+              textAlign={"center"}
+              lineHeight={{ base: "24px", lg: "27px" }}
+              mt={"20px"}
+            >
+              {getAuthor()}
+            </Text>
+          </Box>
+
+          <Grid
+            gridTemplateColumns={"repeat(3,minmax(0,1fr))"}
+            mt={"40px"}
+            gap={{ base: "16px", lg: "30px" }}
+            as={motion.div}
+            variants={staggerGrid}
+            initial="initial"
+            animate="initial"
+            whileInView="animate"
           >
-            {DATA.author}
-          </Text>
+            {data.images.map((item) => (
+              <Img
+                key={item.id}
+                src={`${IMG_BASE_URL}${item.image}`}
+                as={motion.img}
+                variants={staggerGrid}
+                alt="img"
+                width={"100%"}
+                height={"auto"}
+                minH={"100%"}
+                maxH={{ base: "100%", lg: "300px" }}
+                objectFit={"cover"}
+                maxW={{ base: "100%", lg: "300px" }}
+              />
+            ))}
+          </Grid>
         </Box>
 
-        <Grid
-          gridTemplateColumns={"repeat(3,minmax(0,1fr))"}
-          mt={"40px"}
-          gap={"16px"}
-        >
-          {DATA.images.map((item) => (
-            <Image
-              key={item}
-              src={item}
-              alt="img"
-              width={500}
-              height={500}
-              style={{
-                display: "block",
-                objectFit: "cover",
-                width: "100%",
-                height: "auto",
-                minHeight: "100%",
-                maxHeight: "100%",
-              }}
-            />
-          ))}
-        </Grid>
-      </Box>
-
-          { UpArrowComponent && <UpArrowComponent /> }
-    </Flex>
+        {UpArrowComponent && <UpArrowComponent />}
+      </Flex>
+    </Container>
   );
 };
 

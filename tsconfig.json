@@ -1,5 +1,8 @@
 {
   "compilerOptions": {
+    "paths": {
+      "@/*": ["./src/app/*"]
+    },
     "lib": [
       "dom",
       "dom.iterable",
@@ -20,7 +23,8 @@
       {
         "name": "next"
       }
-    ]
+    ],
+    
   },
   "include": [
     "next-env.d.ts",
