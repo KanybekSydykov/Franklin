@@ -155,7 +155,7 @@ const Maintance = ({ siteInfo, children }) => {
       <AlertDialogOverlay>
         <AlertDialogContent>
           <AlertDialogHeader fontSize='lg' fontWeight='bold'>
-            Администратор
+            Администратор metanose
           </AlertDialogHeader>
 
           <AlertDialogBody>
