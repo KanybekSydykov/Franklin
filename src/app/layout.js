@@ -33,7 +33,7 @@ export async function generateMetadata({ params, searchParams }, parent) {
 
 
 
-export default async function RootLayout({ children, params, }) {
+export default async function RootLayout({ children,params, }) {
 
   'use server'
   const data = await getData(API_BASE_URL, API_ENDPOINTS.SITE_INFO)

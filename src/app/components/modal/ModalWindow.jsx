@@ -18,10 +18,10 @@ import {
 import { motion } from "framer-motion";
 import { useParams } from "next/navigation";
 
-const ModalWindow = ({modalProps}) => {
+const ModalWindow = ({ modalProps }) => {
   const { isOpen, onOpen, onClose } = useDisclosure();
 
-  const params = useParams()
+  const params = useParams();
 
   const handleButtonClick = () => {
     onOpen();
@@ -31,11 +31,10 @@ const ModalWindow = ({modalProps}) => {
     }, 3000);
   };
 
-
-
   return (
     <>
       <Button
+        role="group"
         as={motion.button}
         onClick={handleButtonClick}
         w={"120px"}
@@ -46,9 +45,8 @@ const ModalWindow = ({modalProps}) => {
         border={"1px solid #fff"}
         outline={"none"}
         justifyContent={"flex-end"}
-        _focus={{ outline: "none" }}
-        _hover={{ bg: "transparent" }}
-        color={"#fff"}
+        _hover={{ background: "rgba(255, 255, 255, 0.75)" }}
+        transition={"all 0.3s ease"}
       >
         <Box>
           <Text
@@ -60,11 +58,14 @@ const ModalWindow = ({modalProps}) => {
             w={"92px"}
             whiteSpace={"pre-wrap"}
             textAlign={"start"}
+            transition={"all 0.3s ease"}
+            _groupHover={{ color: "#000",_after:{background: "linear-gradient(to right,  rgba(0, 0, 0, 1) 0%, rgba(255, 255, 255, 0) 100%)"}}}
             _after={{
               content: '""',
               display: "block",
-              height: "1px",
+              height: "2px",
               width: "100%",
+              transition: "all 0.3s ease",
               background:
                 "linear-gradient(270deg, rgba(255, 255, 255, 0) 0%, #C2C2C2 100%)",
               position: "absolute",
@@ -86,12 +87,12 @@ const ModalWindow = ({modalProps}) => {
         <ModalContent
           as={motion.div}
           variants={{
-            hidden:{opacity: 0, y: 30},
-            visible:{opacity: 1, y: 0},
+            hidden: { opacity: 0, y: 30 },
+            visible: { opacity: 1, y: 0 },
           }}
-          initial='hidden'
-          animate= 'visible'
-          exit='hidden'
+          initial="hidden"
+          animate="visible"
+          exit="hidden"
           mt={"20%"}
           background={"var(--main-bg)"}
           p={"20px"}
@@ -129,7 +130,9 @@ const ModalWindow = ({modalProps}) => {
                 textAlign={"center"}
                 color={"#fff"}
               >
-               {params.locale === "ru" ? modalProps.title : "Thank you for your request!"}
+                {params.locale === "ru"
+                  ? modalProps.title
+                  : "Thank you for your request!"}
               </Text>
               <Text
                 fontFamily={"var(--opensans)"}
@@ -139,7 +142,9 @@ const ModalWindow = ({modalProps}) => {
                 textAlign={"center"}
                 color={"#fff"}
               >
-               {params.locale === "ru" ? modalProps.subtitle : "We will contact you soon!"}
+                {params.locale === "ru"
+                  ? modalProps.subtitle
+                  : "We will contact you soon!"}
               </Text>
             </Flex>
           </ModalBody>

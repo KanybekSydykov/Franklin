@@ -3,13 +3,24 @@ import React, { useState, useEffect } from 'react';
 import Preview from '@/components/videoplayer/preview/Preview';
 import Main from "./Main";
 
+
+
 const MainCover = ({ videoPreloader, componentPreload, pages, videoHomePage, params }) => {
   const [showPreview, setShowPreview] = useState(true);
+  const [isVisited, setIsVisited] = useState(sessionStorage.getItem('isVisited') === 'false');
+
+  sessionStorage.setItem('isVisited', 'false');
+
+  console.log(isVisited);
+
+
 
   useEffect(() => {
     // After 8 seconds, hide the preview
     const timer = setTimeout(() => {
       setShowPreview(false);
+      sessionStorage.setItem('isVisited', 'true');
+      setIsVisited(true);
     }, 8000);
 
     // Clear the timer when the component unmounts
@@ -18,8 +29,8 @@ const MainCover = ({ videoPreloader, componentPreload, pages, videoHomePage, par
 
   return (
     <>
-      {showPreview && <Preview videoUrl={videoPreloader.url} componentPreload={componentPreload} />}
-      {!showPreview && <Main data={pages} videoUrl={videoHomePage.url} params={params} />}
+      {showPreview && !isVisited &&  <Preview videoUrl={videoPreloader.url} componentPreload={componentPreload} />}
+      {isVisited && <Main data={pages} videoUrl={videoHomePage.url} params={params} />}
     </>
   );
 };
