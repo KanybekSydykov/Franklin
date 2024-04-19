@@ -60,8 +60,6 @@ export default function AboutUsCover({ data ,params}) {
     }
   }, [data, params]);
 
-  console.log(data);
-
 
   return (
     <Flex flexDirection={"column"} gap={"120px"}>

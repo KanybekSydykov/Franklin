@@ -1,3 +1,5 @@
+
+
 export const getData = async (baseUrl, endpoint) => {
   try {
 
@@ -6,12 +8,18 @@ export const getData = async (baseUrl, endpoint) => {
 
     const res = await fetch(url); // Fetching data from the API
     if (!res.ok) {
-     console.log(url, res, 'something went wrong');
+      const error = new Error(` ${res.status}`);
+      error.status = res.status
+
+    throw  error// Re-throwing the error to handle it elsewhere
     }
 
     const data = await res.json(); // Parsing the response JSON
     if (!data) {
-      return { error: 'No data available' };
+      const error = new Error(`${res.status}`);
+      error.status = res.status
+
+    throw  error// Re-throwing the error to handle it elsewhere
     }
 
     return data; // Returning the fetched data

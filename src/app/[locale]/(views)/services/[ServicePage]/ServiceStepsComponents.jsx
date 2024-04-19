@@ -1,10 +1,7 @@
 import React, { useRef } from "react";
-import { Box, Text } from "@chakra-ui/react";
+import { Text } from "@chakra-ui/react";
 import OpacityDiv from "@/components/animation-components/OpacityDiv";
-import ServiceStepsContainer from "@/components/shared-components/service-steps/ServiceStepsContainer";
-import MaterialEquipmentProcurement from "@/components/shared-components/material-equipment-rocurement/MaterialEquipmentProcurement";
-import Offer from "@/components/shared-components/unique-offer/Offer";
-import { motion, useInView } from "framer-motion";
+import { motion } from "framer-motion";
 
 const ServiceStepsComponents = ({ componentsArray }) => {
 
@@ -45,12 +42,6 @@ const ServiceStepsComponents = ({ componentsArray }) => {
       {componentsArray.map((component,index)=>(
         <OpacityDiv key={index} Component={component.component} animations={false}  data={component.data} />
       ))}
-      {/* <OpacityDiv Component={ServiceStepsContainer} serviceData={serviceData} />
-      <OpacityDiv
-        Component={MaterialEquipmentProcurement}
-        equipmentData={equipmentData}
-      />
-      <OpacityDiv Component={Offer} /> */}
     </>
   );
 };

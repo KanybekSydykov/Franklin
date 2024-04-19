@@ -1,23 +1,16 @@
-'use client'
-
-import Principes from '@/components/shared-components/principes/Principes';
-import Subtleties from "@/components/shared-components/subtleties/Subtleties";
-import QuoteSection from "@/components/shared-components/quote/QuoteSection";
-import UpArrow from "@/components/shared-components/up-arrow/UpArrow";
-import Philosophy from "@/components/shared-components/philosophy/Philosophy";
-import AboutUs from "@/[locale]/(views)/about/AboutUs";
-import ServiceStepsComponents from './ServiceStepsComponents'
+"use client";
+import ServiceStepsComponents from "./ServiceStepsComponents";
 import { Flex } from "@chakra-ui/react";
 import { useEffect, useState } from "react";
 import OpacityDiv from "@/components/animation-components/OpacityDiv";
 import { usePathname } from "next/navigation";
-import React from 'react'
-import { getChildComponent, getAnimationProps } from "@/utils/componentsFilter"
+import React from "react";
+import { getChildComponent, getAnimationProps } from "@/utils/componentsFilter";
 
-const ServicePage = ({data ,params}) => {
+const ServicePage = ({ data, params }) => {
   const [components, setComponents] = useState([]);
 
-  const path = usePathname()
+  const path = usePathname();
 
   useEffect(() => {
     if (data) {
@@ -26,19 +19,32 @@ const ServicePage = ({data ,params}) => {
 
       data.content_blocks.forEach((item, index) => {
         const component = getChildComponent(item.type);
-        const animationProps = getAnimationProps(item.type, item.order < data.content_blocks.length);
+        const animationProps = getAnimationProps(
+          item.type,
+          item.order < data.content_blocks.length
+        );
 
-        if (item.type === 'equipment' || item.type === 'service-plan') {
-          currentGroup.push({ component, data: item, props: animationProps, params });
+        if (item.type === "equipment" || item.type === "service-plan") {
+          currentGroup.push({
+            component,
+            data: item,
+            props: animationProps,
+            params,
+          });
         } else {
           if (currentGroup.length > 0) {
             groupedComponents.push(currentGroup);
             currentGroup = [];
           }
-          groupedComponents.push([{ component, data: item, props: animationProps, params }]);
+          groupedComponents.push([
+            { component, data: item, props: animationProps, params },
+          ]);
         }
 
-        if (index === data.content_blocks.length - 1 && currentGroup.length > 0) {
+        if (
+          index === data.content_blocks.length - 1 &&
+          currentGroup.length > 0
+        ) {
           groupedComponents.push(currentGroup);
         }
       });
@@ -47,32 +53,30 @@ const ServicePage = ({data ,params}) => {
     }
   }, [data, params]);
 
-  console.log(components);
-
-  console.log(data);
-
-
   return (
     <Flex flexDirection={"column"} gap={"120px"}>
-  {components.map((componentsArray, index) => (
-    <React.Fragment key={index}>
-      {componentsArray.length <= 1 ? (
-        componentsArray.map((item, itemIndex) => (
-          <OpacityDiv
-            key={itemIndex}
-            Component={item.component}
-            data={item.data}
-            params={item.params}
-            {...item.props}
-          />
-        ))
-      ) : (
-        <ServiceStepsComponents title={data.title_ru} componentsArray={componentsArray}  />
-      )}
-    </React.Fragment>
-  ))}
-</Flex>
+      {components.map((componentsArray, index) => (
+        <React.Fragment key={index}>
+          {componentsArray.length <= 1 ? (
+            componentsArray.map((item, itemIndex) => (
+              <OpacityDiv
+                key={itemIndex}
+                Component={item.component}
+                data={item.data}
+                params={item.params}
+                {...item.props}
+              />
+            ))
+          ) : (
+            <ServiceStepsComponents
+              title={data.title_ru}
+              componentsArray={componentsArray}
+            />
+          )}
+        </React.Fragment>
+      ))}
+    </Flex>
   );
-}
+};
 
-export default ServicePage
+export default ServicePage;

@@ -28,6 +28,8 @@ const Header = ({data}) => {
   const breakpoint = useBreakpoint();
   const params = useParams();
 
+
+
   return (
     <header className="header">
       <Flex
@@ -63,7 +65,7 @@ const Header = ({data}) => {
                   <ChakraLink
                   as={Link}
                     key={idx}
-                    href={`/${params.locale}/${links[idx].route}`}
+                    href={`/${path.startsWith('/ru') ? 'ru' : 'en'}/${links[idx].route}`}
                     fontWeight={`${isActive ? "700" : "300"}`}
                     fontFamily={data[title].title.toLowerCase() === 'franklin' ? 'lora' : 'opensans'}
                     fontSize="18px"
@@ -73,7 +75,7 @@ const Header = ({data}) => {
                     transition={"all 0.3s ease"}
                     _hover={{ textDecoration: `${isActive ? "none" : "underline"}`, }}
                   >
-                    {params.locale === 'ru' ? data[title].title_ru : data[title].title_en}
+                    {path.startsWith('/ru') ? data[title].title_ru : data[title].title_en}
                   </ChakraLink>
                 );
               })}
@@ -84,7 +86,7 @@ const Header = ({data}) => {
             position={"absolute"}
             top={{ base: "20px", lg: "calc(50% - 40px)" }}
             left={"calc(50% - 15px)"}
-            href={`/${params.locale}/`}
+            href={`/${path.startsWith('/ru') ? 'ru' : 'en'}/`}
           >
             <AnimatedLogo/>
           </ChakraLink>

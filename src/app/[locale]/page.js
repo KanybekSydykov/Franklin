@@ -1,6 +1,7 @@
 import { getData } from '@/utils/serverActions'
 import { API_BASE_URL, API_ENDPOINTS } from '@/api/apiConfig'
-import MainCover from './MainCover'
+import MainCover from '../MainCover'
+import Errors from '@/components/shared-components/Errors'
 
 
 
@@ -25,10 +26,10 @@ export default async function Home({ params }) {
   }
 
 
-
   return (
     <>
       <MainCover {...data} />
+
     </>
   );
 }

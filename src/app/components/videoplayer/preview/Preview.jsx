@@ -9,6 +9,23 @@ const variants = {
   visible: {
     opacity: 1,
     zIndex: 10,
+    y:0,
+    scale:1,
+    transition: { duration: 1, type: "tween" },
+  },
+  hidden: {
+    opacity: [0.5, 0],
+    zIndex: -1,
+    scale:0.5,
+    y:-300,
+    transition: { duration: 1, type: "tween" },
+  },
+};
+
+const component = {
+  visible: {
+    opacity: 1,
+    zIndex: 10,
     transition: { duration: 1, type: "tween" },
   },
   hidden: {
@@ -68,7 +85,7 @@ const Preview = ({ videoUrl, componentPreload }) => {
       {isComponentVisible && (
         <Box
           as={motion.div}
-          variants={variants}
+          variants={component}
           // {
           //   visible: {
           //     opacity: [1],

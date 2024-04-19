@@ -15,4 +15,5 @@ export const API_ENDPOINTS = {
   CONTACTS: 'contacts/',
   SEND_FORM: 'applications/',
   PRELOAD: 'preload/',
+  SITE_INFO : 'site-info/',
 };

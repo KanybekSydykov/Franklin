@@ -1,9 +1,9 @@
 import React from "react";
-import styles from "@/[locale]/page.module.css";
+import styles from "./page.module.css";
 import Link from "next/link";
 import { Link as ChakraLink, Flex, Grid, GridItem } from "@chakra-ui/react";
 import AnimatedLogo from "@/components/animation-components/AnimatedLogo";
-import Links from "@/[locale]/Links";
+import Links from "./Links";
 import LocaleSwitcher from "./LocaleSwitcher";
 
 const Main = ({ data, videoUrl ,params}) => {

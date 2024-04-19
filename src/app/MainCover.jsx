@@ -1,7 +1,7 @@
 'use client'
 import React, { useState, useEffect } from 'react';
 import Preview from '@/components/videoplayer/preview/Preview';
-import Main from "@/[locale]/Main";
+import Main from "./Main";
 
 const MainCover = ({ videoPreloader, componentPreload, pages, videoHomePage, params }) => {
   const [showPreview, setShowPreview] = useState(true);
