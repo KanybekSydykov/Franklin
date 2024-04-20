@@ -1,5 +1,5 @@
 import React from 'react'
-import ProjectId from './ProjectId'
+import ProjectId from '@/components/shared-components/portfolio/ProjectId'
 import { API_BASE_URL, API_ENDPOINTS } from '@/api/apiConfig';
 import { getData } from '@/utils/serverActions';
 

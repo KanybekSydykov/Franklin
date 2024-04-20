@@ -1,5 +1,5 @@
 import React from 'react'
-import Services from './Services'
+import Services from '@/components/shared-components/services/Services'
 import { API_BASE_URL, API_ENDPOINTS } from '@/api/apiConfig';
 import { getData } from '@/utils/serverActions';
 

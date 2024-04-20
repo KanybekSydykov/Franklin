@@ -1,4 +1,4 @@
-import Project from './Project'
+import Project from '@/components/shared-components/portfolio/Project'
 import { API_BASE_URL, API_ENDPOINTS } from '@/api/apiConfig';
 import { getData } from '@/utils/serverActions';
 

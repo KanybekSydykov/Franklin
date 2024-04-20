@@ -1,5 +1,5 @@
 import React from 'react';
-import Portfolio from './Portfolio';
+import Portfolio from '@/components/shared-components/portfolio/Portfolio';
 import { API_BASE_URL, API_ENDPOINTS } from '@/api/apiConfig';
 import { getData } from '@/utils/serverActions';
 

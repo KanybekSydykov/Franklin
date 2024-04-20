@@ -1,8 +1,8 @@
 import { Open_Sans, Lora, Cinzel, Noto_Sans } from "next/font/google";
-import "@/globals.css";
-import Header from "../../components/shared-components/header/Header";
+import "@/app/globals.css";
+import Header from "@/components/shared-components/header/Header";
 import {getData} from '@/utils/serverActions'
-import {API_BASE_URL,IMG_BASE_URL, API_ENDPOINTS} from '@/api/apiConfig'
+import {API_BASE_URL, API_ENDPOINTS} from '@/api/apiConfig'
 
 
 
@@ -29,9 +29,6 @@ import {API_BASE_URL,IMG_BASE_URL, API_ENDPOINTS} from '@/api/apiConfig'
   weight: ['300', '400', '700'],
   variable: "--font-noto",
 })
-
-
-
 
 
 export default async function AboutLayout({ children,params }) {

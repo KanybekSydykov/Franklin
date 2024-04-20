@@ -1,4 +1,4 @@
-import ServicePage from './ServicePage'
+import ServicePage from '@/components/shared-components/services/ServicePage'
 import { API_BASE_URL, API_ENDPOINTS } from '@/api/apiConfig';
 import { getData } from '@/utils/serverActions';
 
