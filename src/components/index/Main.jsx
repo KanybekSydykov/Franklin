@@ -6,14 +6,14 @@ import AnimatedLogo from "@/components/animation-components/AnimatedLogo";
 import Links from "./Links";
 import LocaleSwitcher from "./LocaleSwitcher";
 
-const Main = ({ data, videoUrl ,params}) => {
+const Main = ({ data,zIndex=-1 ,params}) => {
 
-    console.log(videoUrl);
   return (
     <main className={styles.main}>
       <Grid
         w={"100%"}
         h={{ base: "auto", lg: "100vh" }}
+        zIndex={zIndex}
         gridTemplateColumns={{
           base: "repeat(1, minmax(0, 1fr))",
           lg: "40% auto",
@@ -62,7 +62,7 @@ const Main = ({ data, videoUrl ,params}) => {
             className={styles.video}
             poster="/video-poster.png"
           >
-            <source src={videoUrl} type="video/mp4" />
+            <source src={'/homepage_video.mp4'} type="video/mp4" />
           </video>
         </GridItem>
         <GridItem

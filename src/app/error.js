@@ -1,9 +1,10 @@
 'use client' // Error components must be Client Components
 
-import { useEffect } from 'react'
+import { Suspense, useEffect } from 'react'
 import { Text, Flex, Box, Container, Img } from '@chakra-ui/react'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation';
+import HomePageSkeleton from '@/components/skeleton/HomePageSkeleton';
 
 export default function Error({ error, reset }) {
 
@@ -17,6 +18,8 @@ export default function Error({ error, reset }) {
   console.log(error);
 
   return (
+    <Suspense fallback={<HomePageSkeleton/>}>
+
     <Container
     display={"flex"}
     flexDirection={"column"}
@@ -130,5 +133,6 @@ export default function Error({ error, reset }) {
       </Box>
     </Flex>
   </Container>
+    </Suspense>
   )
 }

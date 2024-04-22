@@ -1,7 +1,8 @@
-import React from 'react';
+import React, { Suspense } from 'react';
 import Portfolio from '@/components/shared-components/portfolio/Portfolio';
 import { API_BASE_URL, API_ENDPOINTS } from '@/api/apiConfig';
 import { getData } from '@/utils/serverActions';
+import HomePageSkeleton from '@/components/skeleton/HomePageSkeleton';
 
 
 const Page = async ({ params }) => {
@@ -9,12 +10,17 @@ const Page = async ({ params }) => {
   'use server';
   
   // Call getPageData to fetch data
-  const data = await getData(API_BASE_URL, API_ENDPOINTS.PORTFOLIO_DURATION);
+  'use server'
+  const res = await fetch(`${API_BASE_URL}${API_ENDPOINTS.PAGES}`)
+  const data = await res.json()
 
   // Render Portfolio component with data
   return (
     <>
-        <Portfolio data={data} params={params} />
+     <Suspense fallback={<HomePageSkeleton />}>
+     <Portfolio data={data['portfolio_page']} params={params} />
+    </Suspense>
+       
     </>
   );
 };

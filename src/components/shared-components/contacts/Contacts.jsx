@@ -11,8 +11,11 @@ import {
 import Link from "next/link";
 import FormCover from "@/components/form/FormCover";
 
-const Contacts = ({ data: [data], params }) => {
+const Contacts = ({ data, params }) => {
   const { locale } = params;
+
+console.log(data);
+
 
   return (
     <Container
@@ -157,6 +160,7 @@ const Contacts = ({ data: [data], params }) => {
         </Text>
       </Box>
     </Container>
+
   );
 };
 

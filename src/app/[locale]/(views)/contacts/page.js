@@ -1,17 +1,21 @@
-import React from 'react';
+import React, { Suspense } from 'react';
 import Contacts from '@/components/shared-components/contacts/Contacts';
 import {API_BASE_URL, API_ENDPOINTS} from '@/api/apiConfig'
-import {getData} from '@/utils/serverActions'
+import HomePageSkeleton from '@/components/skeleton/HomePageSkeleton';
 
 const page = async({params}) => {
   
   'use server'
-  const data = await getData(API_BASE_URL,API_ENDPOINTS.CONTACTS)
+  const res = await fetch(`${API_BASE_URL}${API_ENDPOINTS.PAGES}`)
+  const data = await res.json()
   
   return (
-    <div>
-      <Contacts  data={data} params={params}/>
-    </div>
+
+         <Suspense fallback={<HomePageSkeleton />}>
+       <Contacts  data={data['contact_page']} params={params}/>
+      </Suspense>
+     
+
   )
 }
 

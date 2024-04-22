@@ -5,7 +5,7 @@ import Link from "next/link";
 import DrawerCover from "@/components/shared-components/drawer/DrawerCover";
 import Divider from "@/components/shared-components/divider/Divider";
 
-import { useParams,usePathname } from "next/navigation";
+import { useParams,usePathname, useSearchParams } from "next/navigation";
 import AnimatedLogo from "../../animation-components/AnimatedLogo";
 
 const links = [
@@ -27,6 +27,8 @@ const Header = ({data}) => {
   const path = usePathname();
   const breakpoint = useBreakpoint();
   const params = useParams();
+  const searchParams = useSearchParams();
+  console.log(params,searchParams);
 
 
 
@@ -60,6 +62,8 @@ const Header = ({data}) => {
               justifyContent="center"
             >
               {Object.keys(data).map((title, idx) => {
+
+                console.log(title);
                 const isActive = path.startsWith(`/${params.locale}/${links[idx].route}`);
                 return (
                   <ChakraLink

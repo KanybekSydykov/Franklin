@@ -27,7 +27,7 @@ const Maintance = ({ siteInfo, children }) => {
       }
   }
 
-  if (!siteInfo.technical_works) {
+  if (siteInfo.technical_works) {
     return (<>{ children}</>);
   } else if(siteInfo.technical_works && isVisible) {
     return (

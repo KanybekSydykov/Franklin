@@ -33,7 +33,8 @@ import {API_BASE_URL, API_ENDPOINTS} from '@/api/apiConfig'
 
 export default async function AboutLayout({ children,params }) {
   'use server'
-  const data = await getData(API_BASE_URL,API_ENDPOINTS.PAGES)
+  const res = await fetch(`${API_BASE_URL}${API_ENDPOINTS.PAGES}`)
+  const data = await res.json()
 
   return (
     <section className={`section-snap ${lora.variable} ${opensans.variable} ${cinzel.variable} ${noto.variable}`} style={{ minHeight: '100vh', position: 'relative' }}>

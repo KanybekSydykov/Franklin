@@ -1,7 +1,8 @@
-import React from 'react'
+import React, { Suspense } from 'react'
 import Services from '@/components/shared-components/services/Services'
 import { API_BASE_URL, API_ENDPOINTS } from '@/api/apiConfig';
 import { getData } from '@/utils/serverActions';
+import HomePageSkeleton from '@/components/skeleton/HomePageSkeleton';
 
 export async function generateMetadata({ params, searchParams }, parent) {
   // read route params
@@ -36,12 +37,15 @@ export async function generateMetadata({ params, searchParams }, parent) {
 const Page = async ({ params }) => {
 
   'use server'
-  const data = await getData(API_BASE_URL, `${API_ENDPOINTS.SERVICE_PAGE}`)
-
-  console.log(data);
+  'use server'
+  const res = await fetch(`${API_BASE_URL}${API_ENDPOINTS.PAGES}`)
+  const data = await res.json()
 
   return (
-    <Services data={data[0]} params={params} />
+    <Suspense fallback={<HomePageSkeleton />}>
+      <Services data={data['service_page']} params={params} />
+    </Suspense>
+
   )
 }
 export default Page

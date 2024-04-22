@@ -8,7 +8,7 @@ import AboutUs from "./AboutUs";
 import { Flex } from "@chakra-ui/react";
 import { useEffect, useState } from "react";
 import OpacityDiv from "@/components/animation-components/OpacityDiv";
-import { usePathname } from "next/navigation";
+import { useParams, usePathname, useSearchParams } from "next/navigation";
 
 
 function getChildComponent(name) {
@@ -48,7 +48,7 @@ export default function AboutUsCover({ data ,params}) {
 
   useEffect(() => {
     if (data) {
-      const componentNames = data[0].content_blocks.map((item) => ({
+      const componentNames = data.content_blocks.map((item) => ({
         component: getChildComponent(item.type),
         data: item,
         props: getAnimationProps(item.type),

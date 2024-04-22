@@ -4,16 +4,19 @@ import Link from 'next/link'
 
 const routes = ['about','portfolio','services','contacts']
 
-export default function LinkContent({ data ,params,allData,id}) {
+export default function LinkContent({ data ,params,id}) {
 
   const { locale } = params;
+
+  // console.log(data , id);
+
     return (
       <>
         <ChakraLink
                     as={Link}
                     prefetch={true}
                     textDecoration={"none"}
-                    href={`${params.locale}/${routes[id]}`}
+                    href={{pathname:`${params.locale}/${routes[id]}`}}
                     w={"100%"}
                     _hover={{ textDecoration: "none", color: "#fff" }}
                   >

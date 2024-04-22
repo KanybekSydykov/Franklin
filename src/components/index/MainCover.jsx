@@ -3,13 +3,7 @@ import React, { useState, useEffect } from "react";
 import Preview from "@/components/videoplayer/preview/Preview";
 import Main from "./Main";
 
-const MainCover = ({
-  videoPreloader,
-  componentPreload,
-  pages,
-  videoHomePage,
-  params,
-}) => {
+const MainCover = ({ data, params }) => {
   const [showPreview, setShowPreview] = useState(true);
   const [isVisited, setIsVisited] = useState(false);
 
@@ -18,29 +12,34 @@ const MainCover = ({
       setIsVisited(sessionStorage.getItem("isVisited"));
     }
     // After 8 seconds, hide the preview
-    const timer = setTimeout(() => {
-      setShowPreview(false);
-      if (window) {
-        sessionStorage.setItem("isVisited", "true");
-        setIsVisited(sessionStorage.getItem("isVisited"));
-      }
-    }, 8000);
+    // const timer = setTimeout(() => {
+    //   setShowPreview(false);
+    //   if (window) {
+    //     sessionStorage.setItem("isVisited", "true");
+    //     setIsVisited(sessionStorage.getItem("isVisited"));
+    //   }
+    // }, 8000);
 
     // Clear the timer when the component unmounts
-    return () => clearTimeout(timer);
+    // return () => clearTimeout(timer);
   }, []); // Empty dependency array ensures this effect runs only once
+
+  function handlePreviewEnd() {
+    console.log("end to animate set storage");
+    setIsVisited(sessionStorage.setItem("isVisited",'true'));
+    setIsVisited(true);
+  }
 
   return (
     <>
-      {showPreview && !isVisited && (
-        <Preview
-          videoUrl={videoPreloader.url}
-          componentPreload={componentPreload}
-        />
-      )}
-      {isVisited && (
+       {!isVisited && <Preview params={params} handlePreviewEnd={handlePreviewEnd} />} 
+        <Main zIndex={isVisited ? 10 : -1} data={data} params={params} />
+
+       
+      
+      {/* {isVisited && (
         <Main data={pages} videoUrl={videoHomePage.url} params={params} />
-      )}
+      )} */}
     </>
   );
 };

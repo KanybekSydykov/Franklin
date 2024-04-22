@@ -75,7 +75,7 @@ const Portfolio = ({ data, params }) => {
           lineHeight={"25px"}
           display={{ base: "block", lg: "none" }}
         >
-          {locale === "ru" ? data[0].page.title : "Portfolio"}
+          {locale === "ru" ? data.title : "Portfolio"}
         </Text>
 
         <Grid
@@ -95,7 +95,7 @@ const Portfolio = ({ data, params }) => {
             },
           }}
         >
-          {data.map((item) => (
+          {data.durations.map((item) => (
             <motion.div
               key={item.name}
               exit={{ opacity: 1, scale: 1 }}
