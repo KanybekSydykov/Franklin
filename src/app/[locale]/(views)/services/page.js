@@ -31,14 +31,13 @@ export async function generateMetadata({ params, searchParams }, parent) {
     },
   }
 }
-
+export const dynamic = 'force-static'
 
 
 const Page = async ({ params }) => {
-
-  'use server'
-  'use server'
   const res = await fetch(`${API_BASE_URL}${API_ENDPOINTS.PAGES}`)
+  console.log('fetching data in contacts again');
+
   const data = await res.json()
 
   return (

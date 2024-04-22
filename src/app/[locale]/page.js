@@ -44,6 +44,8 @@ export async function generateMetadata({ params, searchParams }, parent) {
   
 //     return data
 //   }
+
+export const dynamic = 'force-static'
 const page = async({params}) => {
 
     const data = await getData(API_BASE_URL,API_ENDPOINTS.PAGES)

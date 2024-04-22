@@ -14,8 +14,6 @@ import FormCover from "@/components/form/FormCover";
 const Contacts = ({ data, params }) => {
   const { locale } = params;
 
-console.log(data);
-
 
   return (
     <Container

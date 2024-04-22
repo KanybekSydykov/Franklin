@@ -29,6 +29,7 @@ import {API_BASE_URL, API_ENDPOINTS} from '@/api/apiConfig'
   weight: ['300', '400', '700'],
   variable: "--font-noto",
 })
+export const dynamic = 'force-static'
 
 
 export default async function AboutLayout({ children,params }) {

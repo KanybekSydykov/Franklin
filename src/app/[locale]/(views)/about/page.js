@@ -32,12 +32,15 @@ import HomePageSkeleton from '@/components/skeleton/HomePageSkeleton'
 //   }
 // }
 
+export const dynamic = 'force-static'
 
 
 
 export default async function Page({ params }) {
 
   const res = await fetch(`${API_BASE_URL}${API_ENDPOINTS.PAGES}`)
+  console.log('fetching data in contacts again');
+
   const data = await res.json()
 
 

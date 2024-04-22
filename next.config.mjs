@@ -4,7 +4,12 @@ const nextConfig = {
         host: "0.0.0.0",
     },
     images: {
-        domains: ['franklin.tatadev.pro'],
+        remotePatterns: [
+            {
+                protocol: "https",
+                hostname:'franklin.tatadev.pro'
+            }
+        ]
     },
     
 };
