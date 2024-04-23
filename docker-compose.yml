@@ -3,14 +3,14 @@ services:
   frontend:
     container_name: frontend
     build:
-      context: . #if your Dockerfile is not at the same level change the path here (./frontend)
-    restart: always
-    command: yarn dev
+      context: .
+      dockerfile: Dockerfile
+    restart: unless-stopped
     environment:
-      - NODE_ENV=development
+      - NODE_ENV=production
     volumes:
-      - .:/app
+      - ./:/app
       - /app/node_modules
       - /app/.next
     ports:
-      - 3000:3000
+      - "3000:3000"
