@@ -1,7 +1,9 @@
 import React, { Suspense } from 'react';
 import Contacts from '@/components/shared-components/contacts/Contacts';
 import {API_BASE_URL, API_ENDPOINTS} from '@/api/apiConfig'
-import HomePageSkeleton from '@/components/skeleton/HomePageSkeleton';
+import Loading from './loading'
+
+
 export const dynamic = 'force-static'
 
 const page = async({params}) => {
@@ -13,7 +15,7 @@ const page = async({params}) => {
   
   return (
 
-         <Suspense fallback={<HomePageSkeleton />}>
+         <Suspense fallback={<Loading />}>
        <Contacts  data={data['contact_page']} params={params}/>
       </Suspense>
      

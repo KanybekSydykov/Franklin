@@ -71,7 +71,6 @@ const PortfolioSkeleton = () => {
                 initial={"initial"}
                 animate={"initial"}
                 whileHover={"animate"}
-                whileInView={isMobile ? "animate" : "initial"}
               >
                <Skeleton w={'100%'} height={'320px'} />
               </motion.div>

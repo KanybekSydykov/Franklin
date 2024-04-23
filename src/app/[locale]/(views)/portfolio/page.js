@@ -7,8 +7,6 @@ import Loading from './loading';
 export const dynamic = 'force-static'
 
 const Page = async ({ params }) => {
-  // Ensure server-side rendering
-  'use server';
   
   // Call getPageData to fetch data
   'use server'
