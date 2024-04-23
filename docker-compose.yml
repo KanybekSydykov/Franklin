@@ -1,16 +1,19 @@
-version: "3.8"
+version: '3.8'
+
 services:
-  frontend:
-    container_name: frontend
+  app:
     build:
-      context: . #if your Dockerfile is not at the same level change the path here (./frontend)
-    restart: always
-    command: yarn dev
-    environment:
-      - NODE_ENV=development
-    volumes:
-      - .:/app
-      - /app/node_modules
-      - /app/.next
+      context: .
+      target: runner  # указываем, что нужно использовать стадию runner для сборки
     ports:
-      - 3000:3000
+      - "3000:3000"  # пробрасываем порт, чтобы приложение было доступно снаружи
+    environment:
+      - NODE_ENV=production
+      - PORT=3000
+      - HOSTNAME=0.0.0.0
+    user: "1001"  # используем созданного пользователя для запуска
+
+
+
+volumes:
+  .next_cache:  # объявляем volume, если вы хотите сохранить кэш .next между перезапусками контейнера
