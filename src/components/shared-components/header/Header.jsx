@@ -27,8 +27,8 @@ const Header = ({data}) => {
   const path = usePathname();
   const breakpoint = useBreakpoint();
   const params = useParams();
-  const searchParams = useSearchParams();
-  console.log(params,searchParams);
+  const searchParams = useSearchParams()
+
 
 
 
@@ -62,16 +62,13 @@ const Header = ({data}) => {
               justifyContent="center"
             >
               {Object.keys(data).map((title, idx) => {
-
-                console.log(title);
-                const isActive = path.startsWith(`/${links[idx].route}`);
+                const isActive = path.startsWith(`/${params.locale}/${links[idx].route}`);
                 return (
                   <ChakraLink
                   as={Link}
                   prefetch={true}
                     key={idx}
-                    // href={`/${path.startsWith('/ru') ? 'ru' : 'en'}/${links[idx].route}`}
-                    href={`/${links[idx].route}`}
+                    href={`/${path.startsWith('/ru') ? 'ru' : 'en'}/${links[idx].route}`}
                     fontWeight={`${isActive ? "700" : "300"}`}
                     fontFamily={data[title].title.toLowerCase() === 'franklin' ? 'lora' : 'opensans'}
                     fontSize="18px"
@@ -92,8 +89,7 @@ const Header = ({data}) => {
             position={"absolute"}
             top={{ base: "20px", lg: "calc(50% - 40px)" }}
             left={"calc(50% - 15px)"}
-            // href={`/${path.startsWith('/ru') ? 'ru' : 'en'}/`}
-            href={`/`}
+            href={`/${path.startsWith('/ru') ? 'ru' : 'en'}/`}
           >
             <AnimatedLogo/>
           </ChakraLink>

@@ -87,6 +87,7 @@ const Portfolio = ({ data, params }) => {
           gap={"30px"}
           mx={"auto"}
           mt={"30px"}
+          w={"100%"}
           variants={{
             visible: {
               transition: {

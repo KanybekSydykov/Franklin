@@ -4,7 +4,7 @@ import { Suspense, useEffect } from 'react'
 import { Text, Flex, Box, Container, Img } from '@chakra-ui/react'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation';
-import HomePageSkeleton from '@/components/skeleton/HomePageSkeleton';
+import AboutPageSkeleton from '@/components/skeleton/AboutPageSkeleton';
 
 export default function Error({ error, reset }) {
 
@@ -18,7 +18,7 @@ export default function Error({ error, reset }) {
   console.log(error);
 
   return (
-    <Suspense fallback={<HomePageSkeleton/>}>
+    <Suspense fallback={<AboutPageSkeleton/>}>
 
     <Container
     display={"flex"}

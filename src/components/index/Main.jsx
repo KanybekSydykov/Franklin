@@ -4,6 +4,7 @@ import Link from "next/link";
 import { Link as ChakraLink, Flex, Grid, GridItem } from "@chakra-ui/react";
 import AnimatedLogo from "@/components/animation-components/AnimatedLogo";
 import Links from "./Links";
+import LocaleSwitcher from "./LocaleSwitcher";
 
 const Main = ({ data,zIndex=-1 ,params}) => {
 
@@ -43,7 +44,7 @@ const Main = ({ data,zIndex=-1 ,params}) => {
               display={{ base: "none", lg: "flex" }}
               overflow={"hidden"}
             >
-              {/* <LocaleSwitcher /> */}
+              <LocaleSwitcher />
             </Flex>
           </Flex>
         </GridItem>

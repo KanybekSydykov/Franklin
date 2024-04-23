@@ -5,18 +5,16 @@ import { API_BASE_URL, API_ENDPOINTS } from '@/api/apiConfig'
 import Maintance from '@/components/maintance/Maintance'
 import Head from 'next/head'
 
-// import { i18n, Locale } from "@/i18n-config";
+import { i18n, Locale } from "@/i18n-config";
 
-// export async function generateStaticParams() {
-//   return i18n.locales.map((locale) => ({ lang: locale }));
-// }
+export async function generateStaticParams() {
+  return i18n.locales.map((locale) => ({ lang: locale }));
+}
 export async function generateMetadata({ params, searchParams }, parent) {
   // read route params
 
   // fetch data
-  const res = await fetch(`${API_BASE_URL}${API_ENDPOINTS.PAGES}`,{
-    cache:'force-cache'
-  })
+  const res = await fetch(`${API_BASE_URL}${API_ENDPOINTS.PAGES}`)
   const meta = await res.json()
 
   // optionally access and extend (rather than replace) parent metadata
@@ -34,14 +32,11 @@ export async function generateMetadata({ params, searchParams }, parent) {
 }
 
 
-export const dynamic = 'force-static'
-
+export const dynamic = 'force-statc'
 
 export default async function RootLayout({ children,params, }) {
 
-  const res = await fetch(`${API_BASE_URL}${API_ENDPOINTS.PAGES}`,{
-    cache:'force-cache'
-  })
+  const res = await fetch(`https://franklin.tatadev.pro/api/v1/pages/`)
   const data = await res.json()
 
   const res2 = await fetch(`${API_BASE_URL}${API_ENDPOINTS.SITE_INFO}`)
@@ -50,7 +45,7 @@ export default async function RootLayout({ children,params, }) {
 
 
   return (
-    <html>
+    <html lang={params.locale}  >
       <body className={`body`}>
         <Providers>
           <Maintance siteInfo={siteInfo} >

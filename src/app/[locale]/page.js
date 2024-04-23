@@ -2,7 +2,7 @@ import React, { Suspense } from 'react'
 import MainCover from '@/components/index/MainCover'
 import { API_BASE_URL, API_ENDPOINTS } from '@/api/apiConfig'
 import { getData } from '@/utils/serverActions'
-import HomePageSkeleton from '@/components/skeleton/HomePageSkeleton'
+import AboutPageSkeleton from '@/components/skeleton/AboutPageSkeleton'
 
 export async function generateMetadata({ params, searchParams }, parent) {
   // read route params
@@ -48,15 +48,14 @@ export async function generateMetadata({ params, searchParams }, parent) {
 export const dynamic = 'force-static'
 const page = async({params}) => {
 
-    const res = await fetch(`${API_BASE_URL}${API_ENDPOINTS.PAGES}`,{
-      cache:'force-cache'
-    })
+  const res = await fetch(`https://franklin.tatadev.pro/api/v1/pages/`)
+
     const data = await res.json()
     
 
   return (
     <>
-       <Suspense fallback={<HomePageSkeleton />}>
+       <Suspense fallback={<AboutPageSkeleton />}>
        <MainCover data={data} params={params} />
       </Suspense>
     </>

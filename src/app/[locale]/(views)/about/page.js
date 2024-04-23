@@ -3,7 +3,7 @@ import { API_BASE_URL, API_ENDPOINTS } from '@/api/apiConfig'
 import { getData } from '@/utils/serverActions'
 import AboutPage from '@/components/server/aboutPage'
 import { Suspense } from 'react'
-import HomePageSkeleton from '@/components/skeleton/HomePageSkeleton'
+import Loading from './loading';
 // export async function generateMetadata({ params, searchParams }, parent) {
 //   // read route params
 //   const id = params.id
@@ -38,7 +38,7 @@ export const dynamic = 'force-static'
 
 export default async function Page({ params }) {
 
-  const res = await fetch(`${API_BASE_URL}${API_ENDPOINTS.PAGES}`)
+  const res = await fetch(`https://franklin.tatadev.pro/api/v1/pages/`)
   console.log('fetching data in contacts again');
 
   const data = await res.json()
@@ -47,9 +47,9 @@ export default async function Page({ params }) {
 
   return (
     <>
-      {/* <AboutUsCover data={data} params={params} /> */}
-      <Suspense fallback={<HomePageSkeleton />}>
-        <AboutPage data={data} params={params} />
+
+      <Suspense fallback={<Loading />}>
+        <AboutPage data={data['about_page']} params={params} />
       </Suspense>
     </>
   )

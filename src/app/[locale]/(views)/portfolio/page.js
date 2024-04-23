@@ -2,7 +2,7 @@ import React, { Suspense } from 'react';
 import Portfolio from '@/components/shared-components/portfolio/Portfolio';
 import { API_BASE_URL, API_ENDPOINTS } from '@/api/apiConfig';
 import { getData } from '@/utils/serverActions';
-import HomePageSkeleton from '@/components/skeleton/HomePageSkeleton';
+import Loading from './loading';
 
 export const dynamic = 'force-static'
 
@@ -20,7 +20,7 @@ const Page = async ({ params }) => {
   // Render Portfolio component with data
   return (
     <>
-     <Suspense fallback={<HomePageSkeleton />}>
+     <Suspense fallback={<Loading />}>
      <Portfolio data={data['portfolio_page']} params={params} />
     </Suspense>
        
