@@ -48,7 +48,10 @@ export async function generateMetadata({ params, searchParams }, parent) {
 export const dynamic = 'force-static'
 const page = async({params}) => {
 
-    const data = await getData(API_BASE_URL,API_ENDPOINTS.PAGES)
+    const res = await fetch(`${API_BASE_URL}${API_ENDPOINTS.PAGES}`,{
+      cache:'force-cache'
+    })
+    const data = await res.json()
     
 
   return (

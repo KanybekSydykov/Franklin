@@ -16,7 +16,7 @@ export default function LinkContent({ data ,params,id}) {
                     as={Link}
                     prefetch={true}
                     textDecoration={"none"}
-                    href={{pathname:`${params.locale}/${routes[id]}`}}
+                    href={{pathname:`/${routes[id]}`}}
                     w={"100%"}
                     _hover={{ textDecoration: "none", color: "#fff" }}
                   >
