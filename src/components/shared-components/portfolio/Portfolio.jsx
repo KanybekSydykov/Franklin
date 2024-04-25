@@ -24,6 +24,8 @@ const Portfolio = ({ data, params }) => {
     return `${name.split(" ").join("-").toLowerCase()}_${id}`;
   }
 
+  console.log(data);
+
   const { locale } = params;
 
   const imageAnimation = {
@@ -82,12 +84,14 @@ const Portfolio = ({ data, params }) => {
           as={motion.div}
           templateColumns={{
             base: "repeat(1, minmax(0,1fr))",
-            md: "repeat(3, minmax(0,1fr))",
+            md: "repeat(2, 320px)",
+            lg: "repeat(3, 300px)",
+            xl: "repeat(3, 320px)",
           }}
-          gap={"30px"}
+          gap={{base:'41px',lg:"30px"}}
           mx={"auto"}
           mt={"30px"}
-          w={"100%"}
+          w={{base:"100%",md:'auto'}}
           variants={{
             visible: {
               transition: {
@@ -117,9 +121,8 @@ const Portfolio = ({ data, params }) => {
             >
               <motion.div
                 initial={"initial"}
-                animate={"initial"}
-                whileHover={"animate"}
-                whileInView={isMobile ? "animate" : "initial"}
+                animate={isMobile ? "animate":"initial"}
+                whileHover={isMobile ? "initial":"animate"}
               >
                 <ChakraLink
                   as={Link}
@@ -132,12 +135,13 @@ const Portfolio = ({ data, params }) => {
                   <Box
                     as={motion.div}
                     width={"100%"}
-                    maxW={"320px"}
+                    maxW={{base:'100%',lg:"320px"}}
                     objectFit={"cover"}
                     aspectRatio={{ base: "350/380", lg: "320/421" }}
                     variants={imageAnimation}
+                    position={'relative'}
                   >
-                    <Image src={item.image} loading="eager" alt="portfolio-image" fill />
+                    <Image src={item.image} loading="eager" alt="portfolio-image" fill style={{objectFit:'cover'}} />
                   </Box>
                   </Box>
                 
@@ -151,7 +155,6 @@ const Portfolio = ({ data, params }) => {
                     textTransform={"uppercase"}
                     mt={{ base: "16px", lg: "20px" }}
                     width={{ base: "auto", lg: "100%" }}
-                    padding={"0 20%"}
                     mx={"auto"}
                   >
                     {locale === "ru" ? item.name_ru : item.name_en}

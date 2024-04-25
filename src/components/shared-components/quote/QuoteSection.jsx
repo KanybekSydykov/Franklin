@@ -1,6 +1,6 @@
 'use client';
 import React,{useRef,useEffect} from "react";
-import { Grid, Box, Text, Flex, Container, Img } from "@chakra-ui/react";
+import { Grid, Box, Text, Flex, Container, Img ,useMediaQuery} from "@chakra-ui/react";
 import { motion ,useInView} from "framer-motion";
 import Image from "next/image";
 
@@ -34,6 +34,7 @@ const staggerGrid = {
 const QuoteSection = ({ UpArrowComponent, scrollTop, data, params }) => {
   const ref = useRef(null)
   const isInView = useInView(ref)
+  const [isMobile] = useMediaQuery("(max-width: 768px)");
   function getQuote() {
     let quote = params.locale === "ru" ? data.title_ru : data.title_en;
 
@@ -60,7 +61,7 @@ const QuoteSection = ({ UpArrowComponent, scrollTop, data, params }) => {
       display={"flex"}
       justifyContent={"center"}
       alignItems={"center"}
-      pt={{ base: "120px", xl: "140px" }}
+      pt={{ base: "120px", lg: "251px" }}
     >
       <Flex
         direction={"column"}
@@ -105,7 +106,7 @@ const QuoteSection = ({ UpArrowComponent, scrollTop, data, params }) => {
             as={motion.div}
             variants={staggerGrid}
             initial="initial"
-            animate={isInView ? "animate" : "initial"}
+            animate={isInView ? `${isMobile ? "initial" : "animate"}` : "initial"}
             ref={ref}
           >
             {data.images.map((item) => (

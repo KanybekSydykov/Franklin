@@ -69,7 +69,7 @@ const Subtleties = ({ yText, data, params }) => {
       display={"flex"}
       justifyContent={"center"}
       alignItems={"center"}
-      pt={{ base: "100px", lg: "120px" }}
+      pt={{ base: "100px", lg: "151px" }}
     >
       <Flex
         direction={{ base: "column", lg: "row" }}
@@ -106,6 +106,7 @@ const Subtleties = ({ yText, data, params }) => {
               display={"flex"}
               flexDirection={"column"}
               gap={{ base: "40px", lg: "20px" }}
+              maxW={'620px'}
             >
               {getDescription().map((item) => (
                 <ListItem key={item}>

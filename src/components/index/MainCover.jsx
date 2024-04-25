@@ -26,14 +26,16 @@ const MainCover = ({ data, params }) => {
 
   function handlePreviewEnd() {
     console.log("end to animate set storage");
+    console.log(isVisited);
     setIsVisited(sessionStorage.setItem("isVisited",'true'));
     setIsVisited(true);
   }
 
+  console.log(isVisited);
   return (
     <>
        {!isVisited && <Preview params={params} handlePreviewEnd={handlePreviewEnd} />} 
-        <Main zIndex={isVisited ? 10 : -1} data={data} params={params} />
+        <Main zIndex={isVisited} data={data} params={params} />
 
        
       

@@ -51,7 +51,7 @@ const AboutUs = ({ yText, data }) => {
       <Flex
         p={"40px 20px"}
         w={"100%"}
-        direction={{ base: "column", lg: "row" }}
+        direction={{ base: "column", lg:data.duration === 'right' ? "row-reverse" : "row" }}
         justifyContent={{ base: "start", lg: "space-between" }}
         alignItems={"center"}
         gap={{ base: "40px", lg: "120px" }}

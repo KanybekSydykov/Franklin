@@ -15,7 +15,7 @@ const ServiceStepsContainer = ({ data }) => {
       display={"flex"}
       flexDirection={"column"}
       justifyContent={{ base: "center", lg: "space-between" }}
-      padding={{ base: "120px 20px 20px", lg: "140px 0px 0px" }}
+      padding={{ base: "120px 20px 20px", lg: "151px 0px 0px" }}
       overflowY={'auto'}
     >
 
@@ -24,7 +24,7 @@ const ServiceStepsContainer = ({ data }) => {
         justifyContent={"start"}
         alignItems={"start"}
         gap={"10px"}
-        mt={"60px"}
+        mt={"85px"}
         w={{ base: "100%", lg: "680px" }}
         mx={'auto'}
       >

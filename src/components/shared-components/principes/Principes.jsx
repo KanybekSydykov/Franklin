@@ -14,8 +14,8 @@ const Principes = ({ yText,opacity,scale ,data,params }) => {
 
 const staggerFlex = {
   initial: {
-    opacity: isMobile ? 0 : 1,
-    y: isMobile ? 30 : 100,
+    opacity: isMobile ? 1 : 0,
+    y: isMobile ? 100 : 30,
   },
   animate: {
     opacity: 1,
@@ -50,7 +50,7 @@ const titleAnimation = {
       justifyContent={"center"}
       alignItems={"center"}
       px={0}
-      pt={{ base: "100px", lg: "120px" }}
+      pt={{ base: "100px", lg: "151px" }}
     >
       <Flex
         direction={"column"}

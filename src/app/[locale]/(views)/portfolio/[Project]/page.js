@@ -6,11 +6,12 @@ import { getData } from '@/utils/serverActions';
 
 // const Project = dynamic(() => import('./Project'))
 
+export const dynamic = 'force-static'
+
 const page = async ({ params }) => {
-  'use server'
   const data = await getData(API_BASE_URL, `${API_ENDPOINTS.PORTFOLIO_DURATION}${params.Project}/`)
 
-
+console.log(data);
   return (
     <div>
       <Project data={data} params={params} />

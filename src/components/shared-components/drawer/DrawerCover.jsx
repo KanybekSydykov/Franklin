@@ -74,7 +74,10 @@ export default function DrawerCover() {
         finalFocusRef={btnRef}
       >
         <DrawerOverlay bg={"rgba(0,0,0, 0.5)"} />
-        <DrawerContent bg={'var(--main-bg)'}>
+        <DrawerContent 
+        bg={'var(--main-bg)'}
+        minW={{base:'100dvw',sm:'80dvw'}}
+        >
           <div className="container d-flex row justify-end align-center">
             <DrawerHeader display={"flex"} flexGrow={"1"}>
               <Image

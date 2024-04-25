@@ -36,7 +36,6 @@ const Header = ({data}) => {
     <header className="header">
       <Flex
         direction={"column"}
-        gap={"5px"}
         position={"sticky"}
         top={0}
         left={0}
@@ -52,7 +51,7 @@ const Header = ({data}) => {
           w={"100%"}
           maxW={"container.xl"}
           position={"relative"}
-          minH={{ base: "100px", lg: "120px" }}
+          minH={{ base: "91px", lg: "150px" }}
         >
           {!(breakpoint === "base" || breakpoint === "md" || breakpoint === "sm") && (
             <Flex

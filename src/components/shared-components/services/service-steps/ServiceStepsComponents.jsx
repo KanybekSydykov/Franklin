@@ -25,6 +25,7 @@ const ServiceStepsComponents = ({ componentsArray }) => {
         }}
         fontFamily={"lora"}
         fontWeight={"400"}
+        fontSize={'20px'}
         textAlign={"center"}
         color={"#fff"}
         lineHeight={"24px"}
@@ -34,7 +35,7 @@ const ServiceStepsComponents = ({ componentsArray }) => {
         background={'transparent'}
         backdropFilter={"blur(2px)"}
         zIndex={2}
-        top={"126px"}
+        top={"181px"}
       >
         {componentsArray[0].params.locale === 'ru' ? componentsArray[0].data.title_ru : componentsArray[0].data.title_en}
       </Text>

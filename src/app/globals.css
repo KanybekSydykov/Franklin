@@ -148,8 +148,8 @@ p {
 }
 
 .logo {
-  width: 40px;
-  height: 83px;
+  width: 30px;
+  height: 58px;
 }
 
 .logo svg {
@@ -183,6 +183,10 @@ p {
   height: 83px;
 }
 
+.perspective{
+  perspective-origin: 100px;
+  perspective: 100px;
+}
 
 
 @keyframes logo {
@@ -198,5 +202,10 @@ p {
 @media screen and (min-width: 992px) {
   .first-letter_services::first-letter {
     font-size: 30px;
+  }
+
+  .logo{
+    width: 40px;
+    height: 83px;
   }
 }

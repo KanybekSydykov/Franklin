@@ -30,7 +30,7 @@ const Services = ({ data, params }) => {
       display={"flex"}
       flexDirection={"column"}
       justifyContent={{ base: "center", lg: "space-between" }}
-      padding={{ base: "120px 20px 20px", lg: "120px 0 20px" }}
+      padding={{ base: "120px 20px 20px", lg: "151px 0 20px" }}
     >
       <Flex
         direction={"column"}
@@ -51,8 +51,8 @@ const Services = ({ data, params }) => {
 
         <Grid
           templateColumns={{
-            base: "repeat(1, minmax(0,1fr))",
-            md: "repeat(2, minmax(0, 1fr))",
+            base: "repeat(1, minmax(320px,350px))",
+            md: "repeat(2, minmax(350px, 360px))",
             lg: `repeat(${Math.min(
               data.services.length,
               5

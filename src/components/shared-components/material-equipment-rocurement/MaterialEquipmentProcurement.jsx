@@ -18,7 +18,7 @@ const MaterialEquipmentProcurement = ({ data }) => {
     flexDirection={"column"}
     justifyContent={{ base: "center", lg: "space-between" }}
     alignItems={{ base: "center", lg: "center" }}
-    padding={{ base: "120px 20px 20px", lg: "120px 0 20px" }}
+    padding={{ base: "120px 20px 20px", lg: "151px 0 20px" }}
   >
       <Box p={{base:"60px 20px 80px",lg:'0 20px'}} maxW={'680px'}>
       <motion.div
@@ -36,7 +36,7 @@ const MaterialEquipmentProcurement = ({ data }) => {
           justifyContent={"start"}
           alignItems={"start"}
           gap={"10px"}
-          mt={{base:'0',lg:"60px"}}
+          mt={{base:'0',lg:"75px"}}
         >
           <Box>
             <Text

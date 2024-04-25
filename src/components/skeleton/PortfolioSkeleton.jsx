@@ -31,7 +31,6 @@ const PortfolioSkeleton = () => {
         </h1>
 
         <Grid
-          as={motion.div}
           templateColumns={{
             base: "repeat(1, minmax(0,1fr))",
             md: "repeat(3, minmax(0,1fr))",
@@ -40,41 +39,12 @@ const PortfolioSkeleton = () => {
           mx={"auto"}
           mt={"30px"}
           w={"100%"}
-          variants={{
-            visible: {
-              transition: {
-                staggerChildren: 0.15,
-              },
-            },
-          }}
+
         >
           {[0,1,2].map((item) => (
-            <motion.div
-              key={item.name}
-              exit={{ opacity: 1, scale: 1 }}
-              variants={{
-                hidden: {
-                  opacity: 0,
-                  scale: 0.5,
-                },
-                visible: {
-                  opacity: 1,
-                  scale: 1,
-                },
-              }}
-              transition={{
-                type: "spring",
-                duration: 1,
-              }}
-            >
-              <motion.div
-                initial={"initial"}
-                animate={"initial"}
-                whileHover={"animate"}
-              >
-               <Skeleton w={'100%'} height={'320px'} />
-              </motion.div>
-            </motion.div>
+
+               <Skeleton key={item} w={'100%'} height={'320px'} />
+
           ))}
         </Grid>
       </Flex>

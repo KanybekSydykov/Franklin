@@ -22,7 +22,7 @@ export default function LinkContent({ data ,params,allData,id}) {
           justifyContent={"center"}
           alignItems={"center"}
           w={"100%"}
-          color={'rgba(255, 255, 255, 0.3)'}
+          color={{base:'#fff',lg:'rgba(255, 255, 255, 0.3)'}}
           _hover={{ textDecoration: "none", color: "#fff" }}
           transition={"all 0.3s ease"}
         >
@@ -31,7 +31,7 @@ export default function LinkContent({ data ,params,allData,id}) {
             justifyContent={"flex-start"}
             alignItems={"center"}
             w={"100%"}
-            gap={'10px'}
+            gap={'30px'}
   
   
           >
@@ -40,7 +40,7 @@ export default function LinkContent({ data ,params,allData,id}) {
               lineHeight={{ base: '97px', lg: '158px' }}
               textAlign={'center'}
               fontWeight={400}
-              w={{ base: '40px', lg: '70px' }}
+              minW={{ base: '40px', lg: '70px' }}
               pt={'10px'}
               fontFamily={'cinzel'}
             >

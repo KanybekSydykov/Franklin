@@ -1,7 +1,7 @@
 import React from "react";
 import { Box, Flex, Img, Text, Container, Highlight } from "@chakra-ui/react";
 import { motion } from "framer-motion";
-import Slider from '../slider/Slider'
+import Slider from "../slider/Slider";
 
 const imgAnimate = {
   initial: {
@@ -15,19 +15,23 @@ const imgAnimate = {
     },
   },
 };
-const Philosophy = ({ yText,data,params }) => {
+const Philosophy = ({ yText, data, params }) => {
+  console.log(data);
 
-  function getTitle(){
-    return params.locale === 'ru' ? data.title_ru : data.title_en
+  function getTitle() {
+    return params.locale === "ru" ? data.title_ru : data.title_en;
   }
-    function getParagraphs() {
+  function getParagraphs() {
+    const paragraphs =
+      params.locale === "ru" ? data.description_ru : data.description_en;
 
-      const paragraphs = params.locale === 'ru' ? data.description_ru : data.description_en;
-  
-      return paragraphs.split("<p>")
+    return paragraphs
+      .split("<p>")
       .filter(Boolean) // Remove any empty strings resulting from the split
-      .map((paragraph) => paragraph.replace("</p>", "").replace("<br />", "\n"));
-    }
+      .map((paragraph) =>
+        paragraph.replace("</p>", "").replace("<br />", "\n")
+      );
+  }
 
   return (
     <Container
@@ -53,9 +57,12 @@ const Philosophy = ({ yText,data,params }) => {
         whileInView="visible"
       >
         <Flex
-          direction={{ base: "column", lg: "row-reverse" }}
+          direction={{
+            base: "column",
+            lg: data.duration === "right" ? "row-reverse" : "row",
+          }}
           gap={"30px"}
-          w={'100%'}
+          w={"100%"}
           p={"30px 20px 60px"}
         >
           <Flex
@@ -90,53 +97,52 @@ const Philosophy = ({ yText,data,params }) => {
               direction={"column"}
               justifyContent={"center"}
               alignItems={"center"}
-              maxW={'620px'}
+              maxW={"620px"}
             >
               <Flex direction={"column"} gap={"24px"}>
                 {getParagraphs().map((paragraph, index) => (
                   <Text
-                  key={index}
-                  fontWeight={300}
-                  fontSize={"16px"}
-                  fontFamily={"opensans"}
-                  color={"#fff"}
-                >
-                  <Highlight
-                    query={"FRANKLIN"}
-                    styles={{
-                      fontFamily: "lora",
-                      fontWeight: 700,
-                      fontSize: "18px",
-                      lineHeight: "27px",
-                      color: "rgba(226, 226, 226, 1)",
-                    }}
+                    key={index}
+                    fontWeight={300}
+                    fontSize={"16px"}
+                    fontFamily={"opensans"}
+                    color={"#fff"}
                   >
-                   {paragraph}
-                  </Highlight>
-                </Text>
+                    <Highlight
+                      query={"FRANKLIN"}
+                      styles={{
+                        fontFamily: "lora",
+                        fontWeight: 500,
+                        fontSize: "18px",
+                        lineHeight: "27px",
+                        color: "rgba(226, 226, 226, 1)",
+                      }}
+                    >
+                      {paragraph}
+                    </Highlight>
+                  </Text>
                 ))}
-              
               </Flex>
             </Flex>
           </Flex>
 
           <Box
-          as={motion.div}
-          variants={imgAnimate}
-          initial="initial"
-          animate="initial"
-          whileInView={"animate"}
-          src="/portfolio-1.jpeg"
-          alt="logo"
-          w={"100%"}
-          h={"auto"}
-          maxH={{ base: "475px", lg: "537px" }}
-          height={{ base: "475px", lg: "537px" }}
-          width={{ base: "100%", lg: "402px" }}
-          minW={{ base: "100%", lg: "402px" }}
-        >
-          <Slider images={data.slides} alt={data.title} />
-        </Box>
+            as={motion.div}
+            variants={imgAnimate}
+            initial="initial"
+            animate="initial"
+            whileInView={"animate"}
+            src="/portfolio-1.jpeg"
+            alt="logo"
+            w={"100%"}
+            h={"auto"}
+            maxH={{ base: "475px", lg: "537px" }}
+            height={{ base: "475px", lg: "537px" }}
+            width={{ base: "100%", lg: "402px" }}
+            minW={{ base: "100%", lg: "402px" }}
+          >
+            <Slider images={data.slides} alt={data.title} />
+          </Box>
         </Flex>
       </motion.div>
     </Container>

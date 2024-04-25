@@ -6,7 +6,9 @@ import AboutPageSkeleton from '@/components/skeleton/AboutPageSkeleton';
 
 
 export default async function NotFound({}) {
-  const pages = await getData(API_BASE_URL, API_ENDPOINTS.PAGES)
+  const res = await fetch('https://franklin.tatadev.pro/api/v1/pages/')
+
+  const pages = await res.json()
 
 
   return (

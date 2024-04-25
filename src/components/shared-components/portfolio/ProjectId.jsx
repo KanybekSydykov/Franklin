@@ -26,14 +26,26 @@ const ProjectId = ({ data,params}) => {
       w={"100%"}
       h={{ base: "auto", lg: "100%" }}
       minH={{ base: "auto", lg: "100vh" }}
+      maxH={{ base: "auto", lg: "100vh" }}
+      overflow={{ base: "visible", lg: "hidden" }}
       display={"flex"}
       flexDirection={"column"}
       justifyContent={{ base: "center", lg: "space-between" ,'2xl':'center'}}
-      padding={{ base: "120px 20px 20px", lg: "140px 0 20px" }}
+      padding={{ base: "101px 20px 20px", lg: "151px 0 20px" }}
       
     >
-      <Container w={"100%"} maxW={{ lg: "990px", xl: "container.xl" }}>
-        <ChakraLink
+
+    <Container
+    maxW={'100dvw'}
+    px={{base:'0'}}
+    position={'relative'}
+    >
+            <Container
+            display={'flex'}
+            justifyContent={'flex-start'}
+            alignItems={'center'}
+            w={"100%"} h={'66px'} maxW={{ lg: "990px", xl: "container.xl" }}>
+            <ChakraLink
           as={Link}
           prefetch={true}
           href={`/portfolio/${params.Project}`}
@@ -61,22 +73,21 @@ const ProjectId = ({ data,params}) => {
           </svg>
           <Text>{getTranslatedText('Назад в ','Back to ')} {getTranslatedText(data.duration.name_ru,data.duration.name_en)}</Text>
         </ChakraLink>
-      </Container>
+  
+  </Container>
 
-    <Container
-    maxW={{base:'100%','2xl':'container.xl'}}
-    px={{base:'0','2xl':'16pxpx'}}
-    >
 
       <Flex
         flexDirection={{ base: "column", lg: "row" }}
         gap={{ base: "30px", lg: "40px" }}
-        mt={{ base: "40px", lg: "30px" }}
+        maxH={{base:'auto',lg:'60dvh'}}
+
       >
        <AspectRatio
-        width={{ base: "100%", lg: "60%" }}
+        minW={{ base: "100%", lg: "59%" }}
+        maxW={{ base: "100%", lg: "59%" }}
         height={"auto"}
-        aspectRatio={"350/260"}
+        aspectRatio={{base:"350/260",xl:'none'}}
        >
 
         <Slider images={data.images} arrows={true}  />
@@ -157,7 +168,7 @@ const ProjectId = ({ data,params}) => {
           animate: {
             opacity: 1,
             y: 0,
-            transition: { duration: 0.5, type: "spring", delay: 1 },
+            transition: { duration: 0.5, type: "spring", delay: .5 },
           },
         }}
         initial="initial"

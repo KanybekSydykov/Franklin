@@ -6,22 +6,23 @@ import AnimatedLogo from "@/components/animation-components/AnimatedLogo";
 import Links from "./Links";
 import LocaleSwitcher from "./LocaleSwitcher";
 
-const Main = ({ data,zIndex=-1 ,params}) => {
+const Main = ({ data,zIndex ,params}) => {
+
+  console.log(zIndex);
 
   return (
     <main className={styles.main}>
       <Grid
         w={"100%"}
         h={{ base: "auto", lg: "100vh" }}
-        zIndex={zIndex}
+        zIndex={zIndex ? 1 : -1}
         gridTemplateColumns={{
           base: "repeat(1, minmax(0, 1fr))",
           lg: "40% auto",
-          xl: "545px auto",
         }}
         gridTemplateRows={{ base: "auto", lg: "150px calc(100vh - 150px)" }}
         gap={{ base: "20px", lg: 0 }}
-        columnGap={{ base: "0", lg: "150px" }}
+        columnGap={{ base: "0", lg: "calc(10% - 20px)" }}
         p={{ base: "16px 20px 60px", lg: 0 }}
       >
         <GridItem colSpan={1} order={{ base: 1, lg: 2 }}>
@@ -54,16 +55,17 @@ const Main = ({ data,zIndex=-1 ,params}) => {
           order={{ base: 2, lg: 1 }}
           colSpan={1}
         >
-          <video
-            muted
-            autoPlay
-            loop
-            playsInline
-            className={styles.video}
-            poster="/video-poster.png"
-          >
-            <source src={'/homepage_video.mp4'} type="video/mp4" />
-          </video>
+         {
+          zIndex ?  <video
+          muted
+          autoPlay
+          loop
+          playsInline
+          className={styles.video}
+        >
+          <source src={'/IMG_8919.mp4'} type="video/mp4" />
+        </video> : null
+         }
         </GridItem>
         <GridItem
           display={"flex"}

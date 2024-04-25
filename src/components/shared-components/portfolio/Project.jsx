@@ -9,6 +9,7 @@ import {
   Link as ChakraLink,
   Container,
   AspectRatio,
+  useMediaQuery,
 } from "@chakra-ui/react";
 import Link from "next/link";
 import Image from "next/image";
@@ -19,7 +20,9 @@ const Project = ({ data,params }) => {
   const pathName = usePathname();
   const {locale} = params
 
-  console.log(data);
+  const isMobile = useMediaQuery("(max-width: 768px)");
+
+  console.log(isMobile);
 
   const overlay = {
     initial: {
@@ -53,8 +56,6 @@ const Project = ({ data,params }) => {
     },
   };
 
-  console.log(data);
-
   return (
     <Container
       maxW={{ lg: "990px", xl: "container.xl" }}
@@ -62,9 +63,18 @@ const Project = ({ data,params }) => {
       display={"flex"}
       flexDirection={"column"}
       px={0}
-      pt={{ base: "120px", lg: "142px" }}
+      pt={{ base: "91px", lg: "150px" }}
+
     >
-      <ChakraLink
+
+      <Flex
+        padding={{ base: "0px 20px", lg: "0px" }}
+        flexDirection={"column"}
+        justifyContent={{ base: "center", lg: "space-between" }}
+        flexGrow={1}
+        position={'relative'}
+      >
+              <ChakraLink
         as={Link}
         prefetch={true}
         href={`/${locale}/portfolio`}
@@ -76,6 +86,10 @@ const Project = ({ data,params }) => {
         flexDirection={"row"}
         alignItems={"center"}
         textDecoration={"none"}
+        position={"absolute"}
+        top={'20px'}
+        left={{base:'20px',lg:0}}
+
       >
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -92,11 +106,6 @@ const Project = ({ data,params }) => {
         </svg>
         <Text>Назад в Портфолио</Text>
       </ChakraLink>
-      <Flex
-        padding={{ base: "30px 20px", lg: "0px" }}
-        flexDirection={"column"}
-        justifyContent={{ base: "center", lg: "space-between" }}
-      >
         <Box>
           <Text
             fontFamily={"lora"}
@@ -104,7 +113,8 @@ const Project = ({ data,params }) => {
             fontSize={20}
             color={"#fff"}
             textAlign={"center"}
-            my={"40px"}
+            mt={{base:"75px",lg:'30px'}}
+            mb={{base:'30px',lg:'40px'}}
           >
             {data.name}
           </Text>
@@ -115,12 +125,12 @@ const Project = ({ data,params }) => {
             initial="initial"
             whileInView={"animate"}
             templateColumns={{
-              base: "repeat(2, minmax(0,1fr))",
-              md: "repeat(3, minmax(0,1fr))",
+              base: "repeat(2, minmax(167px,200px))",
+              md: "repeat(3, 200px)",
             }}
-            maxW={"750px"}
-            gap={{ base: "16px", lg: "30px" }}
-            mx={"auto"}
+            gap={{ base: "16px", lg: "20px" }}
+            width={'fit-content'}
+            mx={{base:'unset',md:'auto'}}
           >
             {data.projects.map((project) => (
               <motion.div
@@ -137,7 +147,7 @@ const Project = ({ data,params }) => {
                 >
                   <motion.div
                     initial="initial"
-                    animate="initial"
+                    animate={isMobile[0] ? "animate" : "initial"}
                     whileHover="animate"
                     whileTap="animate"
                     transition={{ type: "spring", duration: 1 }}
@@ -173,6 +183,9 @@ const Project = ({ data,params }) => {
             ))}
           </Grid>
         </Box>
+
+        {
+         data.projects.length > 9 ? 
         <Flex
           justifyContent={"center"}
           direction={"column"}
@@ -252,7 +265,8 @@ const Project = ({ data,params }) => {
           SINCE 2012
         </Text>
       </motion.div>
-        </Flex>
+        </Flex> : null
+        }
       </Flex>
     </Container>
   );

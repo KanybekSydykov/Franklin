@@ -35,6 +35,15 @@ const noto = Noto_Sans({
       cinzel: cinzel.style.fontFamily,
       noto: noto.style.fontFamily,
     },
+    breakpoints:{
+      base: '0em',
+      sm: '30em',
+      md: '48em',
+      lg: '62em',
+      xl: '80em',
+      '2xl': '90em'
+    }
+    
   })
 
 

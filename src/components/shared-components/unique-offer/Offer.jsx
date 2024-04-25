@@ -13,7 +13,7 @@ const Offer = ({data}) => {
       pt={"200px"}
       justifyContent={"start"}
       alignItems={"center"}
-      minH={"calc(100vh)"}
+      minH={"100dvh"}
     >
       <motion.div
         variants={{

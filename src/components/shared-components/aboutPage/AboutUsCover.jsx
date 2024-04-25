@@ -61,7 +61,7 @@ export default function AboutUsCover({ data ,params}) {
 
 
   return (
-    <Flex flexDirection={"column"} gap={"120px"}>
+    <Flex flexDirection={"column"}>
       {components.map((item, index) => (
         <OpacityDiv
           key={index}

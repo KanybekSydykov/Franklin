@@ -40,7 +40,7 @@ const Slider = ({ images, alt, arrows = false }) => {
       <Flex
         className="splide__arrows"
         position={"absolute"}
-        top={"50%"}
+        top={"calc(50% - 20px)"}
         left={"0%"}
         w={"100%"}
         h={"40px"}
