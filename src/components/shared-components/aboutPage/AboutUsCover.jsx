@@ -59,12 +59,11 @@ export default function AboutUsCover({ data ,params}) {
     }
   }, [data, params]);
 
-
   return (
     <Flex flexDirection={"column"}>
-      {components.map((item, index) => (
+      {components.map((item) => (
         <OpacityDiv
-          key={index}
+          key={item.data.id}
           Component={item.component}
           data={item.data}
           params = {item.params}

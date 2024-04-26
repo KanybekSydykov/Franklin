@@ -39,7 +39,7 @@ const image = {
   animate: {
     scale: 1.2,
     transition: {
-      type: "spring",
+      type: "tween",
       duration: 2,
     },
   },
@@ -50,8 +50,7 @@ const image = {
     filter: "grayscale(1%)",
     transition: {
       type: "spring",
-      duration: 1,
-      delay: 0.5
+      duration: 0.1,
     }
   }
 };

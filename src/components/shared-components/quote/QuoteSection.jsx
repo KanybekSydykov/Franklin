@@ -49,10 +49,7 @@ const QuoteSection = ({ UpArrowComponent, scrollTop, data, params }) => {
   }
 
   useEffect(() => {
-    console.log("Element is in view: ", isInView)
   }, [isInView])
-
-  console.log(isInView);
 
   return (
     <Container
@@ -61,12 +58,12 @@ const QuoteSection = ({ UpArrowComponent, scrollTop, data, params }) => {
       display={"flex"}
       justifyContent={"center"}
       alignItems={"center"}
-      pt={{ base: "120px", lg: "251px" }}
+      pt={{ base: "120px", lg: "151px" }}
     >
       <Flex
         direction={"column"}
         justifyContent={"space-between"}
-        minH={"calc(100vh - 90px)"}
+        minH={{base:'100%',lg:"calc(100vh - 151px)"}}
       >
         <Box pt={{ base: "40px", lg: "80px" }}>
           <Box
@@ -106,12 +103,12 @@ const QuoteSection = ({ UpArrowComponent, scrollTop, data, params }) => {
             as={motion.div}
             variants={staggerGrid}
             initial="initial"
-            animate={isInView ? `${isMobile ? "initial" : "animate"}` : "initial"}
+            animate={isInView ? "animate" : "initial"}
             ref={ref}
           >
-            {data.images.map((item) => (
+            {data.images.map((item,index) => (
               <Img
-                key={item.id}
+                key={index}
                 src={`${item.image}`}
                 as={motion.img}
                 variants={staggerGrid}

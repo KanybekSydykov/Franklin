@@ -1,9 +1,7 @@
 import { Providers } from "./Theme.tsx";
 import "@/app/globals.css";
-import { getData } from '@/utils/serverActions'
 import { API_BASE_URL, API_ENDPOINTS } from '@/api/apiConfig'
 import Maintance from '@/components/maintance/Maintance'
-import Head from 'next/head'
 
 import { i18n, Locale } from "@/i18n-config";
 

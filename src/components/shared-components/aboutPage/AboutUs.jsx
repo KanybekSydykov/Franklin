@@ -19,22 +19,18 @@ const imgAnimate = {
 };
 
 const AboutUs = ({ yText, data }) => {
-
   const {locale} = useParams()
-
   function getTitle(){
     return locale === 'ru' ? data.title_ru : data.title_en
   }
 
   function getParagraphs() {
-
     const paragraphs = locale === 'ru' ? data.description_ru : data.description_en;
-
     return paragraphs.split("<p>")
     .filter(Boolean) // Remove any empty strings resulting from the split
     .map((paragraph) => paragraph.replace(/<[^>]*>/g, "").replace("<br />", "\n"));
   }
-  
+
   return (
     <Container
       as={motion.div}

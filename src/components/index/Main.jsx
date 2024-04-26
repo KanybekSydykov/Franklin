@@ -1,4 +1,5 @@
-import React from "react";
+'use client'
+import React,{useEffect, useState,useRef} from "react";
 import styles from "./page.module.css";
 import Link from "next/link";
 import { Link as ChakraLink, Flex, Grid, GridItem } from "@chakra-ui/react";
@@ -7,8 +8,12 @@ import Links from "./Links";
 import LocaleSwitcher from "./LocaleSwitcher";
 
 const Main = ({ data,zIndex ,params}) => {
-
-  console.log(zIndex);
+  const videoRef = useRef(null);
+  useEffect(() => {
+    if(zIndex){
+      videoRef.current.play()
+    }
+  }, [zIndex])
 
   return (
     <main className={styles.main}>
@@ -55,17 +60,15 @@ const Main = ({ data,zIndex ,params}) => {
           order={{ base: 2, lg: 1 }}
           colSpan={1}
         >
-         {
-          zIndex ?  <video
+   <video
+   ref={videoRef}
           muted
-          autoPlay
           loop
           playsInline
           className={styles.video}
         >
-          <source src={'/IMG_8919.mp4'} type="video/mp4" />
-        </video> : null
-         }
+          <source src={'/homepage.mp4'} type="video/mp4" />
+        </video> 
         </GridItem>
         <GridItem
           display={"flex"}

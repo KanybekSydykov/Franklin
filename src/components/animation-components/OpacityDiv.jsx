@@ -3,18 +3,12 @@ import { motion, useScroll, useTransform } from "framer-motion";
 import { Box, useMediaQuery } from "@chakra-ui/react";
 
 const OpacityDiv = ({Component,animate = true,negativeY = true,...props}) => {
-
-  
-
   const [dimensions, setDimensions] = useState({
     offsetTop: 0,
     height: 0,
   });
-
-  const [isMobile] = useMediaQuery("(max-width: 768px)");
-
+  const [isMobile] = useMediaQuery("(max-width: 992px)");
   const ref = useRef(null);
-
   const { scrollY } = useScroll();
   const opacityAbout = useTransform(
     scrollY,
@@ -29,7 +23,7 @@ const OpacityDiv = ({Component,animate = true,negativeY = true,...props}) => {
         ? dimensions.offsetTop + dimensions.height
         : dimensions.offsetTop + dimensions.height / 2,
     ],
-    isMobile ? [0, 0] : [0, negativeY ? -500 : 550]
+    isMobile ? [0, 0] : [0, negativeY ? -300 : 300]
   );
   const scale = useTransform(
     scrollY,
@@ -60,13 +54,13 @@ const OpacityDiv = ({Component,animate = true,negativeY = true,...props}) => {
       as={motion.div}
       ref={ref}
       style={{
-        opacity: animate && opacityAbout,
+        opacity: animate && opacityAbout && !isMobile,
       }}
       w={"100vw"}
-      h={"100dvh"}
+      h={{base:'auto',lg:"100dvh"}}
       overflowX={"hidden"}
-      overflowY={"auto"}
-      minH={"100dvh"}
+      overflowY={{base:"none",lg:"auto"}}
+      minH={{base:'unset',lg:"100dvh"}}
       scrollSnapAlign={"start"}
     >
       <Component

@@ -35,9 +35,9 @@ export const dynamic = 'force-static'
 
 
 const Page = async ({ params }) => {
-  const res = await fetch(`${API_BASE_URL}${API_ENDPOINTS.PAGES}`)
-  console.log('fetching data in contacts again');
-
+  const res = await fetch(`${API_BASE_URL}${API_ENDPOINTS.PAGES}`,{
+    cache: 'force-cache'
+  })
   const data = await res.json()
 
   return (

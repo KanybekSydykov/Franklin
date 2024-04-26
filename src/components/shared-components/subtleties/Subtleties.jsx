@@ -42,24 +42,19 @@ const appearance = {
 
 const Subtleties = ({ yText, data, params }) => {
   function getTitle() {
-    console.log(data.title_en, data.title_ru);
-
     return params.locale === "ru" ? data.title_ru : data.title_en;
   }
   function getDescription() {
-    let description =
-      params.locale === "ru" ? data.description_ru : data.description_en;
+    let description = params.locale === "ru" ? data.description_ru : data.description_en;
+    description = description.replace(/^\s*[\r\n]/gm, "");
   
-    // Remove HTML tags
-    let cleanedText = description.replace(/<[^>]*>/g, "");
+    let cleanedText = description.replace(/<[^>]*>/g, "").replace(/<br\s*\/?>/gi, "");
   
-    // Replace <br> tags with line breaks
-    cleanedText = cleanedText.replace(/<br\s*\/?>/gi, "\n");
+    const sentences = cleanedText.split(/[.|!|?]\s/g);
   
-    console.log(cleanedText);
+    const filteredSentences = sentences.filter(sentence => sentence.trim() !== "");
   
-    // Split the text by line breaks
-    return cleanedText.split("\n").filter(Boolean); // Filter out any empty lines
+    return filteredSentences;
   }
   
   return (
@@ -108,10 +103,12 @@ const Subtleties = ({ yText, data, params }) => {
               gap={{ base: "40px", lg: "20px" }}
               maxW={'620px'}
             >
-              {getDescription().map((item) => (
-                <ListItem key={item}>
+              {getDescription().map((item,index) => (
+              item.length && (
+                <ListItem key={index}>
                   <FirstLetterUppercase text={item} />
                 </ListItem>
+              )
               ))}
             </List>
           </Flex>

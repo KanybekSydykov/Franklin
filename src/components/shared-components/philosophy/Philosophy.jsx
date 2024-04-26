@@ -16,7 +16,6 @@ const imgAnimate = {
   },
 };
 const Philosophy = ({ yText, data, params }) => {
-  console.log(data);
 
   function getTitle() {
     return params.locale === "ru" ? data.title_ru : data.title_en;

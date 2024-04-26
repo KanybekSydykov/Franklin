@@ -13,23 +13,19 @@ const FormCover = ({modalProps}) => {
     message: "",
   });
   const handleNameChange = (name) => {
-    console.log("Name changed:", name);
     setData((prev) => ({ ...prev, name }));
   };
 
   const handlePhoneChange = (phone) => {
-    console.log("Phone changed:", phone);
     setData((prev) => ({ ...prev, phone }));
   };
 
   const handleMessageChange = (message) => {
-    console.log("Message changed:", message);
     setData((prev) => ({ ...prev, message }));
   };
 
   const handleSubmit = async() => {
     const response = await sendForm(data);
-    console.log(response);
   };
   return (
     <Flex

@@ -7,7 +7,7 @@
   position: relative;
 }
 
-.video video {
+.video{
   width: 100%;
 }
 
@@ -135,7 +135,7 @@
   width: 100%;
   aspect-ratio: 1080/1920;
   object-fit: cover;
-
+  max-height: 720px;
 }
 
 @media screen and (min-width: 998px) {

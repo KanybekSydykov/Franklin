@@ -55,6 +55,8 @@ const Form = ({ onNameChange, onPhoneChange, onMessageChange }) => {
           border={"none"}
           outline={"none"}
           fontSize={"16px"}
+          lineHeight={'21px'}
+          height={'21px'}
           color={"#fff"}
           _focus={{ outline: "none" }}
           _focusVisible={{ borderColor: "transparent" }}
@@ -62,7 +64,6 @@ const Form = ({ onNameChange, onPhoneChange, onMessageChange }) => {
 
         />
         <Box
-          mt={"5px"}
           w={"100%"}
           h={"1px"}
           bg={
@@ -84,6 +85,8 @@ const Form = ({ onNameChange, onPhoneChange, onMessageChange }) => {
           border={"none"}
           outline={"none"}
           fontSize={"16px"}
+          lineHeight={'21px'}
+          height={'21px'}
           color={"#fff"}
           _focus={{ outline: "none" }}
           _focusVisible={{ borderColor: "transparent" }}
@@ -92,7 +95,6 @@ const Form = ({ onNameChange, onPhoneChange, onMessageChange }) => {
 
         />
         <Box
-          mt={"5px"}
           w={"100%"}
           h={"1px"}
           bg={
@@ -115,13 +117,13 @@ const Form = ({ onNameChange, onPhoneChange, onMessageChange }) => {
           border={"none"}
           outline={"none"}
           fontSize={"16px"}
+          lineHeight={'21px'}
+          height={'21px'}
           color={"#fff"}
           _focus={{ outline: "none" }}
           _focusVisible={{ borderColor: "transparent" }}
-
         />
         <Box
-          mt={"5px"}
           w={"100%"}
           h={"1px"}
           bg={

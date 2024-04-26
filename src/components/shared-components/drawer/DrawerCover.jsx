@@ -14,31 +14,32 @@ import {
 } from "@chakra-ui/react";
 import Link from "next/link";
 import Image from "next/image";
+import { useParams } from "next/navigation";
 
 
 export const links = [
   {
     id: 1,
-    title: 'Franklin',
-    subtitle: 'О компании',
+    title: 'FRANKLIN',
+    title_en: 'FRANKLIN',
     href: 'about',
   },
   {
     id: 2,
     title: 'ПОРТФОЛИО',
-    subtitle: 'Наши работы',
+    title_en: 'Portfolio',
     href: 'portfolio',
   },
   {
     id: 3,
     title: 'Услуги',
-    subtitle: 'Наши услуги',
+    title_en: 'Services',
     href: 'services',
   },
   {
     id: 4,
     title: 'Контакты',
-    subtitle: 'Как с нами связаться',
+    title_en: 'Contacts',
     href: 'contacts',
   },
 ]
@@ -46,6 +47,7 @@ export const links = [
 
 export default function DrawerCover() {
   const { isOpen, onOpen, onClose } = useDisclosure();
+  const params = useParams();
 
   const btnRef = React.useRef();
 
@@ -80,6 +82,7 @@ export default function DrawerCover() {
         >
           <div className="container d-flex row justify-end align-center">
             <DrawerHeader display={"flex"} flexGrow={"1"}>
+              <Link href={`${params.locale}`} style={{ margin:'0 auto 0 calc(50% - 8px)'}}>
               <Image
                 src="/LOGO-svg.png"
                 alt="logo"
@@ -89,9 +92,10 @@ export default function DrawerCover() {
                   width:'30px',
                   height:'auto',
                   maxHeight:'60px',
-                  margin:'0 auto 0 calc(50% - 8px)'
+                 
                 }}
               />
+              </Link>
             </DrawerHeader>
             <DrawerCloseButton
               w={"32px"}
@@ -121,13 +125,13 @@ export default function DrawerCover() {
                 key={link.id}
                 fontWeight={"500"}
                 fontSize={"22px"}
-                fontFamily={"var(--font-lora)"}
+                fontFamily={"lora"}
                 color={"rgba(223, 223, 223, 1)"}
                 lineHeight={"28px"}
                 textDecoration={"none"}
                 onClick={onClose}
               >
-                {link.title}
+                {params.locale === "ru" ? link.title : link.title_en}
               </ChakraLink>
             ))}
           </DrawerBody>

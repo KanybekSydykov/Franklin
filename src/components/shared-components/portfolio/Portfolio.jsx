@@ -24,8 +24,6 @@ const Portfolio = ({ data, params }) => {
     return `${name.split(" ").join("-").toLowerCase()}_${id}`;
   }
 
-  console.log(data);
-
   const { locale } = params;
 
   const imageAnimation = {

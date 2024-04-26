@@ -10,9 +10,9 @@ const Page = async ({ params }) => {
   
   // Call getPageData to fetch data
   'use server'
-  const res = await fetch(`${API_BASE_URL}${API_ENDPOINTS.PAGES}`)
-  console.log('fetching data in contacts again');
-
+  const res = await fetch(`${API_BASE_URL}${API_ENDPOINTS.PAGES}`,{
+    cache: 'force-cache'
+  })
   const data = await res.json()
 
   // Render Portfolio component with data

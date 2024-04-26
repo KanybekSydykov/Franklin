@@ -14,7 +14,6 @@ import FormCover from "@/components/form/FormCover";
 const Contacts = ({ data, params }) => {
   const { locale } = params;
 
-
   return (
     <Container
       maxW={{ lg: "990px", xl: "container.xl" }}
@@ -23,11 +22,12 @@ const Contacts = ({ data, params }) => {
       display={"flex"}
       flexDirection={"column"}
       justifyContent={{ base: "center", lg: "space-between" }}
-      padding={{ base: "120px 20px 20px", lg: "120px 0 20px" }}
+      padding={{ base: "120px 20px 20px", lg: "151px 0 20px" }}
     >
-      <Box py={"30px"}>
+      <Box>
         <Text
-          fontFamily={"var(--lora)"}
+          mt={{ base: "30px", lg: "50px" }}
+          fontFamily={"lora"}
           fontWeight={400}
           fontSize={{ base: "20px", lg: "30px" }}
           textAlign={"center"}
@@ -38,16 +38,16 @@ const Contacts = ({ data, params }) => {
         </Text>
 
         <Flex
-          mt={"40px"}
-          gap={"38px"}
+          mt={"30px"}
+          gap={"25px"}
           flexDirection={"column"}
           justifyContent={"center"}
           alignItems={"center"}
         >
           {data.addresses.map((item, id) => (
-            <Flex flexDirection={"column"} gap={"10px"} key={id}>
+            <Flex flexDirection={"column"} gap={"20px"} key={id}>
               <Text
-                fontFamily={"var(--lora)"}
+                fontFamily={"lora"}
                 fontWeight={600}
                 fontSize={"18px"}
                 textAlign={"center"}
@@ -57,12 +57,12 @@ const Contacts = ({ data, params }) => {
                 {locale === "ru" ? "Адрес" : "Address"}
               </Text>
               <Text
-                fontFamily={"var(--opensans)"}
+                fontFamily={"opensans"}
                 fontWeight={300}
-                fontSize={"16px"}
+                fontSize={{base:"16px",lg:"18px"}}
                 textAlign={"center"}
                 color={"#fff"}
-                lineHeight={"21px"}
+                lineHeight={"24px"}
               >
                 {locale === "ru" ? item.address_ru : item.address_en}
               </Text>
@@ -70,9 +70,9 @@ const Contacts = ({ data, params }) => {
           ))}
 
           {data.phones.map((item, id) => (
-            <Flex key={id} flexDirection={"column"} gap={"10px"}>
+            <Flex key={id} flexDirection={"column"} gap={"20px"}>
               <Text
-                fontFamily={"var(--lora)"}
+                fontFamily={"lora"}
                 fontWeight={600}
                 fontSize={"18px"}
                 textAlign={"center"}
@@ -82,7 +82,7 @@ const Contacts = ({ data, params }) => {
                 {locale === "ru" ? "Телефон" : "Phone"}
               </Text>
               <Text
-                fontFamily={"var(--opensans)"}
+                fontFamily={"opensans"}
                 fontWeight={300}
                 fontSize={"16px"}
                 textAlign={"center"}
@@ -95,9 +95,9 @@ const Contacts = ({ data, params }) => {
           ))}
 
           {data.emails.map((item, id) => (
-            <Flex key={id} flexDirection={"column"} gap={"10px"}>
+            <Flex key={id} flexDirection={"column"} gap={"20px"}>
               <Text
-                fontFamily={"var(--lora)"}
+                fontFamily={"lora"}
                 fontWeight={600}
                 fontSize={"18px"}
                 textAlign={"center"}
@@ -107,7 +107,7 @@ const Contacts = ({ data, params }) => {
                 E-mail
               </Text>
               <Text
-                fontFamily={"var(--opensans)"}
+                fontFamily={"opensans"}
                 fontWeight={300}
                 fontSize={"16px"}
                 textAlign={"center"}
@@ -123,7 +123,7 @@ const Contacts = ({ data, params }) => {
         <Flex
           flexDirection={"row"}
           gap={"40px"}
-          my={{ base: "50px", lg: "60px" }}
+          my={{ base: "50px", lg: "50px" }}
           justifyContent={"center"}
           alignItems={"center"}
         >
@@ -141,14 +141,19 @@ const Contacts = ({ data, params }) => {
           ))}
         </Flex>
 
-            <Box>
-        <FormCover modalProps={{title:data.pop_message,icon:data.pop_icon,subtitle:data.pop_title}} />
-
-            </Box>
+        <Box>
+          <FormCover
+            modalProps={{
+              title: data.pop_message,
+              icon: data.pop_icon,
+              subtitle: data.pop_title,
+            }}
+          />
+        </Box>
         <Text
           w={"100%"}
           textAlign={"center"}
-          fontFamily={"var(--opensans)"}
+          fontFamily={"opensans"}
           fontWeight={400}
           fontSize={"16px"}
           color={"#fff"}
@@ -158,7 +163,6 @@ const Contacts = ({ data, params }) => {
         </Text>
       </Box>
     </Container>
-
   );
 };
 

@@ -38,9 +38,9 @@ export const dynamic = 'force-static'
 
 export default async function Page({ params }) {
 
-  const res = await fetch(`https://franklin.tatadev.pro/api/v1/pages/`)
-  console.log('fetching data in contacts again');
-
+  const res = await fetch(`https://franklin.tatadev.pro/api/v1/pages/`,{
+    cache: 'force-cache'
+  })
   const data = await res.json()
 
 

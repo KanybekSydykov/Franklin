@@ -16,8 +16,6 @@ import Link from "next/link";
 
 const ProjectId = ({ data,params}) => {
 
-  console.log(data);
-
   function getTranslatedText(ru,en){
     return params.locale === 'ru' ? ru : en
 }

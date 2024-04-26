@@ -22,8 +22,6 @@ const Project = ({ data,params }) => {
 
   const isMobile = useMediaQuery("(max-width: 768px)");
 
-  console.log(isMobile);
-
   const overlay = {
     initial: {
       opacity: 0,

@@ -18,10 +18,6 @@ const Services = ({ data, params }) => {
   function getTranslatedText(ru, en) {
     return params.locale === "ru" ? ru : en;
   }
-
-  console.log(data);
-
-  
   return (
     <Container
       maxW={{ lg: "990px", xl: "container.xl" }}
