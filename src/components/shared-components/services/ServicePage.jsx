@@ -112,6 +112,7 @@ const ServicePage = ({ data, params }) => {
                 data={item.data}
                 params={item.params}
                 {...item.props}
+                index={itemIndex}
               />
             ))
           ) : (

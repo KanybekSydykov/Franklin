@@ -35,7 +35,7 @@ const ServiceStepsComponents = ({ componentsArray }) => {
         background={'transparent'}
         backdropFilter={"blur(2px)"}
         zIndex={2}
-        top={"181px"}
+        top={{base:'141px',lg:"181px"}}
       >
         {componentsArray[0].params.locale === 'ru' ? componentsArray[0].data.title_ru : componentsArray[0].data.title_en}
       </Text>

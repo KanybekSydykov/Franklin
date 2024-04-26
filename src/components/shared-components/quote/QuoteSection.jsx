@@ -31,7 +31,7 @@ const staggerGrid = {
   },
 };
 
-const QuoteSection = ({ UpArrowComponent, scrollTop, data, params }) => {
+const QuoteSection = ({ UpArrowComponent, scrollTop, data, params,index }) => {
   const ref = useRef(null)
   const isInView = useInView(ref)
   const [isMobile] = useMediaQuery("(max-width: 768px)");
@@ -41,6 +41,7 @@ const QuoteSection = ({ UpArrowComponent, scrollTop, data, params }) => {
     return (quote = quote.replace(/<br\s*\/?>/gi, ""));
   }
 
+  console.log(data);
   function getAuthor() {
     let description =
       params.locale === "ru" ? data.description_ru : data.description_en;
@@ -49,6 +50,7 @@ const QuoteSection = ({ UpArrowComponent, scrollTop, data, params }) => {
   }
 
   useEffect(() => {
+    console.log(isInView);
   }, [isInView])
 
   return (
@@ -58,12 +60,12 @@ const QuoteSection = ({ UpArrowComponent, scrollTop, data, params }) => {
       display={"flex"}
       justifyContent={"center"}
       alignItems={"center"}
-      pt={{ base: "120px", lg: "151px" }}
+      pt={{ base: "151px", lg: "151px" }}
     >
       <Flex
         direction={"column"}
         justifyContent={"space-between"}
-        minH={{base:'100%',lg:"calc(100vh - 151px)"}}
+        minH={{base:'calc(100vh - 181px)',lg:"calc(100vh - 151px)"}}
       >
         <Box pt={{ base: "40px", lg: "80px" }}>
           <Box
@@ -103,7 +105,8 @@ const QuoteSection = ({ UpArrowComponent, scrollTop, data, params }) => {
             as={motion.div}
             variants={staggerGrid}
             initial="initial"
-            animate={isInView ? "animate" : "initial"}
+            animate={index === 0 ? "animate" : "initial"}
+            whileInView={'animate'}
             ref={ref}
           >
             {data.images.map((item,index) => (
