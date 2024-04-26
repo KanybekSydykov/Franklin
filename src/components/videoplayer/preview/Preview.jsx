@@ -97,8 +97,8 @@ const Preview = ({ params, handlePreviewEnd }) => {
             { zIndex: -10 },
             { duration: 1, delay: 1.5, ease: "easeInOut" }
           ).then(() => {
-            // handlePreviewEnd();
-            // setIsVisible(false);
+            handlePreviewEnd();
+            setIsVisible(false);
           }),
         ]);
       });
