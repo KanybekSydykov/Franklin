@@ -2,7 +2,7 @@
 import React,{useEffect, useState,useRef} from "react";
 import styles from "./page.module.css";
 import Link from "next/link";
-import { Link as ChakraLink, Flex, Grid, GridItem } from "@chakra-ui/react";
+import { Link as ChakraLink, Flex, Grid, GridItem,Box } from "@chakra-ui/react";
 import AnimatedLogo from "@/components/animation-components/AnimatedLogo";
 import Links from "./Links";
 import LocaleSwitcher from "./LocaleSwitcher";
@@ -31,6 +31,7 @@ const Main = ({ data,zIndex ,params}) => {
         p={{ base: "16px 20px 60px", lg: 0 }}
       >
         <GridItem colSpan={1} order={{ base: 1, lg: 2 }}>
+          
           <Flex
             direction={{ base: "column", lg: "row" }}
             justifyContent={{ base: "center", lg: "space-between" }}
@@ -38,8 +39,18 @@ const Main = ({ data,zIndex ,params}) => {
             gap={{ base: "20px", lg: "0" }}
             pt={{ base: "0", lg: "35px" }}
             pe={{ base: "0", lg: "120px" }}
+
           >
+            <Box position={'relative'}>
+
+            <Box opacity={0}>
             <AnimatedLogo />
+            </Box>
+            <Box position={'absolute'} top={0} left={0}>
+            <AnimatedLogo />
+            </Box>
+            </Box>
+
             <Flex
               direction={"row"}
               justifyContent={"center"}

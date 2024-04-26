@@ -4,7 +4,10 @@ import { getData } from '@/utils/serverActions';
 
 const page = async ({ params }) => {
     'use server'
-    const data = await getData(API_BASE_URL, `${API_ENDPOINTS.SERVICES}${params.ServicePage}/`)
+    const res = await fetch(`${API_BASE_URL}${API_ENDPOINTS.SERVICES}${params.ServicePage}/`,{
+        cache: 'no-cache'
+    })
+    const data = await res.json()
 
     return (
         <>

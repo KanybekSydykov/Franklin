@@ -57,11 +57,12 @@ const OpacityDiv = ({Component,animate = true,negativeY = true,...props}) => {
         opacity: animate && opacityAbout && !isMobile,
       }}
       w={"100vw"}
-      h={{base:'auto',lg:"100dvh"}}
+      h={{base:'auto',lg:"auto"}}
       overflowX={"hidden"}
-      overflowY={{base:"none",lg:"auto"}}
+      overflowY={{base:"none",lg:"none"}}
       minH={{base:'unset',lg:"100dvh"}}
-      scrollSnapAlign={"start"}
+      scrollSnapAlign={"center"}
+      scrollSnapStop={"normal"}
     >
       <Component
         yText={yText}

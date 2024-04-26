@@ -9,9 +9,11 @@ import { getData } from '@/utils/serverActions';
 export const dynamic = 'force-static'
 
 const page = async ({ params }) => {
-  const data = await getData(API_BASE_URL, `${API_ENDPOINTS.PORTFOLIO_DURATION}${params.Project}/`)
+  const res = await fetch(`${API_BASE_URL}${API_ENDPOINTS.PORTFOLIO_DURATION}${params.Project}/`,{
+    cache: 'no-cache'
+  })
+  const data = await res.json()
 
-console.log(data);
   return (
     <div>
       <Project data={data} params={params} />

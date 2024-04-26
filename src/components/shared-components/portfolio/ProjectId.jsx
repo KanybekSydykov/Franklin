@@ -100,7 +100,7 @@ const ProjectId = ({ data,params}) => {
         >
           <Flex direction={"column"} gap={"26px"}>
             <Text
-              fontFamily={"lora"}
+              fontFamily={"opensans"}
               fontWeight={400}
               fontSize={"16px"}
               color={"#CBCBCB"}
@@ -149,6 +149,7 @@ const ProjectId = ({ data,params}) => {
               fontSize={{ base: "16px", lg: "18px" }}
               lineHeight={"24px"}
               color={"#CBCBCB"}
+              maxW={'335px'}
             >
             {getTranslatedText(data.description_ru,data.description_en)}
 

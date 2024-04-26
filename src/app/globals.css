@@ -10,6 +10,13 @@ body {
   padding: 0;
   margin: 0;
   scroll-behavior: smooth;
+  color: unset !important;
+background: linear-gradient(294.25deg, #1D1D1F 0%, #3A3B3F 143.31%);
+scroll-padding-block: 50px;
+}
+
+* {
+  color: unset;
 }
 
 html{
@@ -18,7 +25,7 @@ html{
 }
 
 .body {
-background: linear-gradient(294.25deg, #1D1D1F 0%, #3A3B3F 143.31%);
+  background: linear-gradient(294.25deg, #1d1d1f 0%, #3a3b3f 143.31%);
 
 }
 
@@ -154,6 +161,7 @@ p {
   width: 100%;
   height: auto;
   max-height: 100%;
+  /* fill:"url(linear-gradient(168.86deg, #6D7683 7.67%, #838B97 17.16%, #B1B7BD 27.54%, #C3C6CC 37.05%, #F9F9F9 45.6%, #C1C4CA 52.22%, #959CA5 61.08%, #6D7683 71.04%, #5F6672 79.51%))"; */
 }
 
 .first-letter::first-letter {

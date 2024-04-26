@@ -26,9 +26,9 @@ const ModalWindow = ({ modalProps }) => {
   const handleButtonClick = () => {
     onOpen();
 
-    setTimeout(() => {
-      onClose();
-    }, 3000);
+    // setTimeout(() => {
+    //   onClose();
+    // }, 3000);
   };
 
   return (
@@ -64,7 +64,7 @@ const ModalWindow = ({ modalProps }) => {
               content: '""',
               display: "block",
               height: "2px",
-              width: "100%",
+              width: "114px",
               transition: "all 0.3s ease",
               background:
                 "linear-gradient(270deg, rgba(255, 255, 255, 0) 0%, #C2C2C2 100%)",
@@ -97,6 +97,8 @@ const ModalWindow = ({ modalProps }) => {
           background={"var(--main-bg)"}
           p={"20px"}
           mx={"20px"}
+          borderRadius={0}
+          h={'474px'}
         >
           <ModalCloseButton
             w={"32px"}

@@ -86,7 +86,7 @@ const Project = ({ data,params }) => {
         textDecoration={"none"}
         position={"absolute"}
         top={'20px'}
-        left={{base:'20px',lg:0}}
+        left={{base:'20px',md:'0',xl:'20px'}}
 
       >
         <svg

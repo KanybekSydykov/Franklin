@@ -9,8 +9,8 @@ export const dynamic = 'force-static'
 const page = async({params}) => {
   
   'use server'
-  const res = await fetch(`${API_BASE_URL}${API_ENDPOINTS.PAGES}`,{
-    cache: 'force-cache'
+  const res = await fetch(`https://franklin.tatadev.pro/api/v1/pages/`,{
+    cache: 'no-cache'
   })
   const data = await res.json()
   
