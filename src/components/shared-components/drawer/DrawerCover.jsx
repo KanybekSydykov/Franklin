@@ -26,7 +26,7 @@ export const links = [
   },
   {
     id: 2,
-    title: 'ПОРТФОЛИО',
+    title: 'Портфолио',
     title_en: 'Portfolio',
     href: 'portfolio',
   },
