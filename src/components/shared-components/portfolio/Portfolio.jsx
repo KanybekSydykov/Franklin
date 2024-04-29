@@ -76,7 +76,7 @@ const Portfolio = ({ data, params }) => {
           lineHeight={"25px"}
           display={{ base: "block", lg: "none" }}
         >
-          {locale === "ru" ? data.title : "Portfolio"}
+          {locale === "ru" ? data.title_ru.toUpperCase() : data.title_en.toUpperCase()}
         </Text>
 
         <Grid

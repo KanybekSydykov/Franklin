@@ -14,6 +14,8 @@ import FormCover from "@/components/form/FormCover";
 const Contacts = ({ data, params }) => {
   const { locale } = params;
 
+  console.log(data);
+
   return (
     <Container
       maxW={{ lg: "990px", xl: "container.xl" }}
@@ -34,7 +36,7 @@ const Contacts = ({ data, params }) => {
           color={"#fff"}
           lineHeight={{ base: "25px", lg: "38px" }}
         >
-          {locale === "ru" ? data.title_ru : data.title_en}
+          {locale === "ru" ? data.title_ru.toUpperCase() : data.title_en.toUpperCase()}
         </Text>
 
         <Flex

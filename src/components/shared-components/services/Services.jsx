@@ -16,7 +16,7 @@ import ServiceItem from "./ServiceItem";
 
 const Services = ({ data, params }) => {
   function getTranslatedText(ru, en) {
-    return params.locale === "ru" ? ru : en;
+    return params.locale === "ru" ? ru.toUpperCase() : en.toUpperCase();
   }
   return (
     <Container
