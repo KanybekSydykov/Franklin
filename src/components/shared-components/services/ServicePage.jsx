@@ -117,7 +117,7 @@ const ServicePage = ({ data, params }) => {
             ))
           ) : (
             <ServiceStepsComponents
-              title={data.title_ru}
+              title={{ru:data.title_ru, en:data.title_en}}
               componentsArray={componentsArray}
             />
           )}

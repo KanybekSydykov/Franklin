@@ -6,6 +6,7 @@ import { useParams } from "next/navigation";
 
 const ServiceStepsContainer = ({ data }) => {
 
+
   const {locale} = useParams()
   return (
     <Container

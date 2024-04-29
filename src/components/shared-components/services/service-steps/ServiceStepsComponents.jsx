@@ -1,9 +1,10 @@
+'use client'
 import React, { useRef } from "react";
 import { Text } from "@chakra-ui/react";
 import OpacityDiv from "@/components/animation-components/OpacityDiv";
 import { motion } from "framer-motion";
 
-const ServiceStepsComponents = ({ componentsArray }) => {
+const ServiceStepsComponents = ({ componentsArray,title }) => {
 
   const ref = useRef(null);
   return (
@@ -36,8 +37,9 @@ const ServiceStepsComponents = ({ componentsArray }) => {
         backdropFilter={"blur(2px)"}
         zIndex={2}
         top={{base:'141px',lg:"181px"}}
+        className="container-title"
       >
-        {componentsArray[0].params.locale === 'ru' ? componentsArray[0].data.title_ru : componentsArray[0].data.title_en}
+        {componentsArray[0].params.locale === 'ru' ? title.ru : title.en}
       </Text>
 
       {componentsArray.map((component,index)=>(

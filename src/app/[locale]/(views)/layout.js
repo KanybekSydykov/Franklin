@@ -34,7 +34,9 @@ export const dynamic = 'force-static'
 
 export default async function AboutLayout({ children,params }) {
   'use server'
-  const res = await fetch(`${API_BASE_URL}${API_ENDPOINTS.PAGES}`)
+  const res = await fetch(`${API_BASE_URL}${API_ENDPOINTS.PAGES}`,{
+    cache: 'no-cache'
+  })
   const data = await res.json()
 
   return (
