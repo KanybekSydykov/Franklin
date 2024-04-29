@@ -14,12 +14,12 @@ import Image from "next/image";
 import { motion } from "framer-motion";
 import Link from "next/link";
 
-const ProjectId = ({ data,params}) => {
-
-  function getTranslatedText(ru,en){
-    return params.locale === 'ru' ? ru : en
-}
+const ProjectId = ({ data, params }) => {
+  function getTranslatedText(ru, en) {
+    return params.locale === "ru" ? ru : en;
+  }
   return (
+    <>
     <Flex
       w={"100%"}
       h={{ base: "auto", lg: "100%" }}
@@ -28,137 +28,135 @@ const ProjectId = ({ data,params}) => {
       overflow={{ base: "visible", lg: "hidden" }}
       display={"flex"}
       flexDirection={"column"}
-      justifyContent={{ base: "center", lg: "space-between" ,'2xl':'center'}}
+      justifyContent={{ base: "center", lg: "flex-start" }}
       padding={{ base: "101px 20px 20px", lg: "151px 0 20px" }}
-      
     >
-
-    <Container
-    maxW={'100dvw'}
-    px={{base:'0'}}
-    position={'relative'}
-    >
-            <Container
-            display={'flex'}
-            justifyContent={'flex-start'}
-            alignItems={'center'}
-            w={"100%"} h={'66px'} maxW={{ lg: "990px", xl: "container.xl" }}>
-            <ChakraLink
-          as={Link}
-          prefetch={true}
-          href={`/portfolio/${params.Project}`}
-          fontFamily={"opensans"}
-          fontWeight={300}
-          fontSize={16}
-          color={"rgba(188, 188, 188, 1)"}
+      <Container maxW={"100dvw"} px={{ base: "0" }} position={"relative"}>
+        <Container
           display={"flex"}
-          flexDirection={"row"}
+          justifyContent={"flex-start"}
           alignItems={"center"}
-          textDecoration={"none"}
+          w={"100%"}
+          h={"66px"}
+          maxW={{ lg: "990px", xl: "container.xl" }}
         >
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="16"
-            height="16"
-            fill="currentColor"
-            className="bi bi-chevron-left"
-            viewBox="0 0 16 16"
+          <ChakraLink
+            as={Link}
+            prefetch={true}
+            href={`/portfolio/${params.Project}`}
+            fontFamily={"opensans"}
+            fontWeight={300}
+            fontSize={16}
+            color={"rgba(188, 188, 188, 1)"}
+            display={"flex"}
+            flexDirection={"row"}
+            alignItems={"center"}
+            textDecoration={"none"}
           >
-            <path
-              fillRule="evenodd"
-              d="M11.354 1.646a.5.5 0 0 1 0 .708L5.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0"
-            />
-          </svg>
-          <Text>{getTranslatedText('Назад в ','Back to ')} {getTranslatedText(data.duration.name_ru,data.duration.name_en)}</Text>
-        </ChakraLink>
-  
-  </Container>
-
-
-      <Flex
-        flexDirection={{ base: "column", lg: "row" }}
-        gap={{ base: "30px", lg: "40px" }}
-        maxH={{base:'auto',lg:'60dvh'}}
-
-      >
-       <AspectRatio
-        minW={{ base: "100%", lg: "59%" }}
-        maxW={{ base: "100%", lg: "59%" }}
-        height={"auto"}
-        aspectRatio={{base:"350/260",xl:'none'}}
-       >
-
-        <Slider images={data.images} arrows={true}  />
-        </AspectRatio>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="16"
+              height="16"
+              fill="currentColor"
+              className="bi bi-chevron-left"
+              viewBox="0 0 16 16"
+            >
+              <path
+                fillRule="evenodd"
+                d="M11.354 1.646a.5.5 0 0 1 0 .708L5.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0"
+              />
+            </svg>
+            <Text>
+              {getTranslatedText("Назад в ", "Back to ")}{" "}
+              {getTranslatedText(data.duration.name_ru, data.duration.name_en)}
+            </Text>
+          </ChakraLink>
+        </Container>
 
         <Flex
-          direction={"column"}
-          gap={{ base: "45px", lg: "100px" }}
-          justify={"flex-start"}
-          align={"flex-start"}
-          pt={{ base: "0px", lg: "40px" }}
+          flexDirection={{ base: "column", lg: "row" }}
+          gap={{ base: "30px", lg: "40px" }}
+          maxH={{ base: "auto", lg: "60dvh" }}
+          maxW={'1920px'}
+          mx={'auto'}
         >
-          <Flex direction={"column"} gap={"26px"}>
-            <Text
-              fontFamily={"opensans"}
-              fontWeight={400}
-              fontSize={"16px"}
-              color={"#CBCBCB"}
-              textAlign={"start"}
-            >
-           {getTranslatedText(data.duration.name_ru,data.duration.name_en)}
-            </Text>
-            <Text
-              fontFamily={"lora"}
-              fontWeight={{ base: 700, lg: 500 }}
-              fontSize={{ base: "18px", lg: "24px" }}
-              color={"#fff"}
-              textAlign={"start"}
-              textTransform={"uppercase"}
-            >
-              {getTranslatedText(data.title_ru,data.title_en)}
-            </Text>
+          <AspectRatio
+            minW={{ base: "100%", lg: "59%" }}
+            maxW={{ base: "100%", lg: "59%" }}
+            height={"auto"}
+            aspectRatio={{ base: "350/260", xl: "none" }}
+          >
+            <Slider images={data.images} arrows={true} />
+          </AspectRatio>
+
+          <Flex
+            direction={"column"}
+            gap={{ base: "45px", lg: "100px" }}
+            justify={"flex-start"}
+            align={"flex-start"}
+            pt={{ base: "0px", lg: "40px" }}
+          >
+            <Flex direction={"column"} gap={"26px"}>
+              <Text
+                fontFamily={"opensans"}
+                fontWeight={400}
+                fontSize={"16px"}
+                color={"#CBCBCB"}
+                textAlign={"start"}
+              >
+                {getTranslatedText(
+                  data.duration.name_ru,
+                  data.duration.name_en
+                )}
+              </Text>
+              <Text
+                fontFamily={"lora"}
+                fontWeight={{ base: 700, lg: 500 }}
+                fontSize={{ base: "18px", lg: "24px" }}
+                color={"#fff"}
+                textAlign={"start"}
+                textTransform={"uppercase"}
+              >
+                {getTranslatedText(data.title_ru, data.title_en)}
+              </Text>
+            </Flex>
+
+            <Flex direction={"column"} gap={"20px"}>
+              <Text
+                fontFamily={"opensans"}
+                fontWeight={600}
+                fontSize={{ base: "16px", lg: "18px" }}
+                lineHeight={"20px"}
+                color={"#fff"}
+              >
+                {params.locale === "ru" ? "Локация" : "Location"}
+              </Text>
+              <Text
+                fontFamily={"opensans"}
+                fontWeight={300}
+                fontSize={{ base: "16px", lg: "18px" }}
+                lineHeight={"24px"}
+                color={"#CBCBCB"}
+              >
+                {getTranslatedText(data.location_ru, data.location_en)}
+              </Text>
+            </Flex>
+
+            <Box>
+              <Text
+                fontFamily={"opensans"}
+                fontWeight={300}
+                fontSize={{ base: "16px", lg: "18px" }}
+                lineHeight={"24px"}
+                color={"#CBCBCB"}
+                maxW={"335px"}
+              >
+                {getTranslatedText(data.description_ru, data.description_en)}
+              </Text>
+            </Box>
           </Flex>
-
-          <Flex direction={"column"} gap={"20px"}>
-            <Text
-              fontFamily={"opensans"}
-              fontWeight={600}
-              fontSize={{ base: "16px", lg: "18px" }}
-              lineHeight={"20px"}
-              color={"#fff"}
-            >
-              {params.locale === 'ru' ? 'Локация' : 'Location'}
-            </Text>
-            <Text
-              fontFamily={"opensans"}
-              fontWeight={300}
-              fontSize={{ base: "16px", lg: "18px" }}
-              lineHeight={"24px"}
-              color={"#CBCBCB"}
-            >
-            {getTranslatedText(data.location_ru,data.location_en)}
-
-            </Text>
-          </Flex>
-
-          <Box>
-            <Text
-              fontFamily={"opensans"}
-              fontWeight={300}
-              fontSize={{ base: "16px", lg: "18px" }}
-              lineHeight={"24px"}
-              color={"#CBCBCB"}
-              maxW={'335px'}
-            >
-            {getTranslatedText(data.description_ru,data.description_en)}
-
-            </Text>
-          </Box>
         </Flex>
-      </Flex>
-    </Container>
-
+      </Container>
 
       <Flex
         as={motion.div}
@@ -167,7 +165,7 @@ const ProjectId = ({ data,params}) => {
           animate: {
             opacity: 1,
             y: 0,
-            transition: { duration: 0.5, type: "spring", delay: .5 },
+            transition: { duration: 0.5, type: "spring", delay: 0.5 },
           },
         }}
         initial="initial"
@@ -188,6 +186,7 @@ const ProjectId = ({ data,params}) => {
         </Text>
       </Flex>
     </Flex>
+    </>
   );
 };
 

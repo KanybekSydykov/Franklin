@@ -18,9 +18,10 @@ const Slider = ({ images, alt, arrows = false }) => {
         autoplay: true,
         interval: 2000,
         pagination: false,
-        speed: 1000,
+        speed: 2000,
         arrows: arrows,
         drag:false,
+        gap:20
       }}
       w={"100%"}
       h={"100%"}
@@ -32,6 +33,7 @@ const Slider = ({ images, alt, arrows = false }) => {
               src={image.image}
               alt={`${alt} image ${index}`}
               fill
+              style={{ objectFit: "cover" }}
             />
           </Box>
         ))}

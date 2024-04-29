@@ -123,7 +123,7 @@ const ServiceItem = ({ item, getTranslatedText }) => {
 
             <Text
               fontWeight={400}
-              fontSize={"16px"}
+              fontSize={"14px"}
               fontFamily={"lora"}
               color={"#fff"}
               textAlign={"center"}

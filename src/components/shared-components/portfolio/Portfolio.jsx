@@ -1,6 +1,6 @@
-"use client";
+'use client';
 
-import React, { useRef } from "react";
+import React from "react";
 import {
   Box,
   Text,
@@ -20,9 +20,9 @@ const Portfolio = ({ data, params }) => {
   const pathName = usePathname();
   const [isMobile] = useMediaQuery("(max-width: 768px)");
 
-  function getLink({ name, id }) {
-    return `${name.split(" ").join("-").toLowerCase()}_${id}`;
-  }
+  // function getLink({ name, id }) {
+  //   return `${name.split(" ").join("-").toLowerCase()}_${id}`;
+  // }
 
   const { locale } = params;
 
@@ -47,6 +47,7 @@ const Portfolio = ({ data, params }) => {
   };
 
   return (
+    <>
     <Container
       maxW={"container.xl"}
       h={{ base: "auto", md: "100%" }}
@@ -186,6 +187,7 @@ const Portfolio = ({ data, params }) => {
         </Text>
       </motion.div>
     </Container>
+    </>
   );
 };
 

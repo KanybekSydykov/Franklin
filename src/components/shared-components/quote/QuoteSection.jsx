@@ -40,8 +40,6 @@ const QuoteSection = ({ UpArrowComponent, scrollTop, data, params,index }) => {
 
     return (quote = quote.replace(/<br\s*\/?>/gi, ""));
   }
-
-  console.log(data);
   function getAuthor() {
     let description =
       params.locale === "ru" ? data.description_ru : data.description_en;
@@ -67,7 +65,7 @@ const QuoteSection = ({ UpArrowComponent, scrollTop, data, params,index }) => {
         justifyContent={"space-between"}
         minH={{base:'calc(100vh - 181px)',lg:"calc(100vh - 151px)"}}
       >
-        <Box pt={{ base: "40px", lg: "80px" }}>
+        <Box pt={{ base: "40px", lg: `${index > 0 ? "40px" : "80px"} ` }}>
           <Box
             px={"20px"}
             as={motion.div}

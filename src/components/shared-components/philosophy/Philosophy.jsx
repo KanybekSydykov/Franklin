@@ -1,20 +1,9 @@
 import React from "react";
-import { Box, Flex, Img, Text, Container, Highlight } from "@chakra-ui/react";
+import { Box, Flex, Img, Text, Container, Highlight,AspectRatio } from "@chakra-ui/react";
 import { motion } from "framer-motion";
 import Slider from "../slider/Slider";
 
-const imgAnimate = {
-  initial: {
-    opacity: 0,
-  },
-  animate: {
-    opacity: 1,
-    transition: {
-      type: "spring",
-      delay: -0.3,
-    },
-  },
-};
+
 const Philosophy = ({ yText, data, params }) => {
 
   function getTitle() {
@@ -32,6 +21,19 @@ const Philosophy = ({ yText, data, params }) => {
       );
   }
 
+  const imgAnimate = {
+    initial: {
+      opacity: 0,
+    },
+    animate: {
+      opacity: 1,
+      transition: {
+        type: "spring",
+        delay: -0.3,
+      },
+    },
+  };
+
   return (
     <Container
       maxW={"container.xl"}
@@ -41,6 +43,7 @@ const Philosophy = ({ yText, data, params }) => {
       justifyContent={"center"}
       alignItems={"center"}
       pt={{ base: "100px", lg: "120px" }}
+      px={{ base: "20px", lg: "0" }}
     >
       <motion.div
         variants={{
@@ -125,23 +128,21 @@ const Philosophy = ({ yText, data, params }) => {
             </Flex>
           </Flex>
 
-          <Box
-            as={motion.div}
-            variants={imgAnimate}
-            initial="initial"
-            animate="initial"
-            whileInView={"animate"}
-            src="/portfolio-1.jpeg"
-            alt="logo"
-            w={"100%"}
-            h={"auto"}
-            maxH={{ base: "475px", lg: "537px" }}
-            height={{ base: "475px", lg: "537px" }}
-            width={{ base: "100%", lg: "402px" }}
-            minW={{ base: "100%", lg: "402px" }}
+          <AspectRatio
+          as={motion.div}
+          variants={imgAnimate}
+          initial="initial"
+          animate="initial"
+          whileInView={"animate"}
+          w={"100%"}
+          minW={{base:'100%',lg:'402px'}}
+          maxW={{base:'100%',lg:'402px'}}
+          h={"auto"}
+          position={"relative"}
+          ratio={350/466}
           >
             <Slider images={data.slides} alt={data.title} />
-          </Box>
+          </AspectRatio>
         </Flex>
       </motion.div>
     </Container>

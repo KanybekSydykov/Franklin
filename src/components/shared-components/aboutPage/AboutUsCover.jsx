@@ -44,8 +44,6 @@ function getAnimationProps(name) {
 export default function AboutUsCover({ data ,params}) {
   const [components, setComponents] = useState([]);
 
-  const path = usePathname()
-
   useEffect(() => {
     if (data) {
       const componentNames = data.content_blocks.map((item) => ({
@@ -61,14 +59,15 @@ export default function AboutUsCover({ data ,params}) {
 
   return (
     <Flex flexDirection={"column"}>
-      {components.map((item) => (
+      {components.map((item,index) => (
         <OpacityDiv
           key={item.data.id}
           Component={item.component}
           data={item.data}
           params = {item.params}
+          index = {index}
           {...item.props}
-        />
+        ></OpacityDiv>
       ))}
     </Flex>
   );

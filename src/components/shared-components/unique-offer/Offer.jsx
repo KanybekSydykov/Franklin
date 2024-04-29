@@ -143,7 +143,8 @@ const Offer = ({data}) => {
               lineHeight={"16.8px"}
               color={"#fff"}
               pe={"10px"}
-              maxW={{ base: "75px", lg: "200px" }}
+              maxW={{ base: "75px", lg: "150px" }}
+              textAlign={'end'}
             >
               {params.locale === 'ru' ? data.second_field_ru : data.second_field_en}
               

@@ -16,7 +16,7 @@ export default async function Page({ params }) {
   return (
     <>
       <Suspense fallback={<Loading />}>
-        <AboutPage data={data['about_page']} params={params} />
+        <AboutPage data={data['about_page']} params={params}> </AboutPage>
       </Suspense>
     </>
   )

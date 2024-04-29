@@ -5,7 +5,7 @@ import Link from "next/link";
 import DrawerCover from "@/components/shared-components/drawer/DrawerCover";
 import Divider from "@/components/shared-components/divider/Divider";
 
-import { useParams,usePathname, useSearchParams } from "next/navigation";
+import { useParams,usePathname } from "next/navigation";
 import AnimatedLogo from "../../animation-components/AnimatedLogo";
 
 const links = [
@@ -27,8 +27,6 @@ const Header = ({data}) => {
   const path = usePathname();
   const breakpoint = useBreakpoint();
   const params = useParams();
-  const searchParams = useSearchParams()
-
 
 
 
@@ -36,6 +34,7 @@ const Header = ({data}) => {
     <header className="header">
       <Flex
         direction={"column"}
+        gap={"5px"}
         position={"sticky"}
         top={0}
         left={0}
@@ -51,7 +50,7 @@ const Header = ({data}) => {
           w={"100%"}
           maxW={"container.xl"}
           position={"relative"}
-          minH={{ base: "91px", lg: "150px" }}
+          minH={{ base: "100px", lg: "145px" }}
         >
           {!(breakpoint === "base" || breakpoint === "md" || breakpoint === "sm") && (
             <Flex
@@ -69,7 +68,7 @@ const Header = ({data}) => {
                     key={idx}
                     href={`/${path.startsWith('/ru') ? 'ru' : 'en'}/${links[idx].route}`}
                     fontWeight={`${isActive ? "700" : "300"}`}
-                    fontFamily={data[title].title.toLowerCase() === 'franklin' ? 'lora' : 'opensans'}
+                    fontFamily={data[title].title_ru === 'FRANKLIN' ? 'lora' : 'opensans'}
                     fontSize="18px"
                     datatype={isActive ? "active" : "inactive"}
                     lineHeight="23px"
@@ -77,7 +76,7 @@ const Header = ({data}) => {
                     transition={"all 0.3s ease"}
                     _hover={{ textDecoration: `${isActive ? "none" : "underline"}`, }}
                   >
-                    {path.startsWith('/ru') ? data[title].title_ru : data[title].title_en}
+                    {params.locale === 'ru' ? data[title].title_ru : data[title].title_en}
                   </ChakraLink>
                 );
               })}

@@ -1,25 +1,14 @@
 "use client";
 
 import React from "react";
-import { Container, Flex, Text, Box, Highlight } from "@chakra-ui/react";
+import { Container, Flex, Text, Box, Highlight, AspectRatio } from "@chakra-ui/react";
 import { motion } from "framer-motion";
 import Slider from "@/components/shared-components/slider/Slider";
 import { useParams } from "next/navigation";
-const imgAnimate = {
-  initial: {
-    opacity: 0,
-  },
-  animate: {
-    opacity: 1,
-    transition: {
-      type: "spring",
-      delay: -0.3,
-    },
-  },
-};
+
 
 const AboutUs = ({ yText, data }) => {
-  const {locale} = useParams()
+  const { locale } = useParams()
   function getTitle(){
     return locale === 'ru' ? data.title_ru : data.title_en
   }
@@ -31,6 +20,19 @@ const AboutUs = ({ yText, data }) => {
     .map((paragraph) => paragraph.replace(/<[^>]*>/g, "").replace("<br />", "\n"));
   }
 
+  const imgAnimate = {
+    initial: {
+      opacity: 0,
+    },
+    animate: {
+      opacity: 1,
+      transition: {
+        type: "spring",
+        delay: -0.3,
+      },
+    },
+  };
+
   return (
     <Container
       as={motion.div}
@@ -41,6 +43,7 @@ const AboutUs = ({ yText, data }) => {
       justifyContent={"center"}
       alignItems={"center"}
       pt={{ base: "100px", lg: "120px" }}
+      px={{ base: "20px", lg: "0" }}
       scrollSnapAlign={"start"}
       transition={{ type: "spring", duration: 0.5 }}
     >
@@ -111,22 +114,21 @@ const AboutUs = ({ yText, data }) => {
           </Flex>
         </motion.div>
 
-        <Box
+        <AspectRatio
           as={motion.div}
           variants={imgAnimate}
           initial="initial"
           animate="initial"
           whileInView={"animate"}
           w={"100%"}
+          minW={{base:'100%',lg:'402px'}}
+          maxW={{base:'100%',lg:'402px'}}
           h={"auto"}
           position={"relative"}
-          maxH={{ base: "475px", lg: "537px" }}
-          height={{ base: "475px", lg: "537px" }}
-          width={{ base: "100%", lg: "402px" }}
-          minW={{ base: "100%", lg: "402px" }}
+          ratio={350/466}
         >
           <Slider images={data.slides} alt={data.title} />
-        </Box>
+        </AspectRatio>
       </Flex>
     </Container>
   );

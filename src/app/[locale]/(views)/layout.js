@@ -40,7 +40,7 @@ export default async function AboutLayout({ children,params }) {
   return (
     <section className={`section-snap ${lora.variable} ${opensans.variable} ${cinzel.variable} ${noto.variable}`} style={{ minHeight: '100vh', position: 'relative' }}>
 
-    <Header data={data} />
+    <Header data={data} params={params}/>
       {
         children
       }

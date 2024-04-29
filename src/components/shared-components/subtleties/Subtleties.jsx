@@ -65,9 +65,10 @@ const Subtleties = ({ yText, data, params }) => {
       justifyContent={"center"}
       alignItems={"center"}
       pt={{ base: "100px", lg: "151px" }}
+      className="subtelties"
     >
       <Flex
-        direction={{ base: "column", lg: "row" }}
+        direction={{ base: "column", lg: data.duration === "right" ? "row-reverse" : "row" }}
         gap={"30px"}
         justify={"center"}
         alignItems={"center"}
