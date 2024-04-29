@@ -24,12 +24,12 @@ const ProjectId = ({ data, params }) => {
       w={"100%"}
       h={{ base: "auto", lg: "100%" }}
       minH={{ base: "auto", lg: "100vh" }}
-      maxH={{ base: "auto", lg: "100vh" }}
+      maxH={{ base: "auto", lg: "unset" }}
       overflow={{ base: "visible", lg: "hidden" }}
       display={"flex"}
       flexDirection={"column"}
       justifyContent={{ base: "center", lg: "flex-start" }}
-      padding={{ base: "101px 20px 20px", lg: "151px 0 20px" }}
+      padding={{ base: "101px 20px 20px", lg: "151px 0 0px" }}
     >
       <Container maxW={"100dvw"} px={{ base: "0" }} position={"relative"}>
         <Container
@@ -77,7 +77,7 @@ const ProjectId = ({ data, params }) => {
         <Flex
           flexDirection={{ base: "column", lg: "row" }}
           gap={{ base: "30px", lg: "40px" }}
-          maxH={{ base: "auto", lg: "60dvh" }}
+          maxH={{ base: "auto", lg: "70dvh" }}
           maxW={'1920px'}
           mx={'auto'}
         >
@@ -85,7 +85,8 @@ const ProjectId = ({ data, params }) => {
             minW={{ base: "100%", lg: "59%" }}
             maxW={{ base: "100%", lg: "59%" }}
             height={"auto"}
-            aspectRatio={{ base: "350/260", xl: "none" }}
+            maxH={{base:'unset',lg:'600px'}}
+            aspectRatio={{ base: "350/260"}}
           >
             <Slider images={data.images} arrows={true} />
           </AspectRatio>
@@ -174,7 +175,7 @@ const ProjectId = ({ data, params }) => {
         whileInView="animate"
         justifyContent={"center"}
         direction={"column"}
-        pt={"40px"}
+        pt={"16px"}
         align={"center"}
       >
         <Text
