@@ -121,7 +121,7 @@ export default function DrawerCover() {
             {links.map((link) => (
               <ChakraLink
                 as={Link}
-                href={`/${link.href}`}
+                href={`/${params.locale}/${link.href}`}
                 key={link.id}
                 fontWeight={"500"}
                 fontSize={"22px"}
