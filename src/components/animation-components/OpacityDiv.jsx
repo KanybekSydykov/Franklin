@@ -2,7 +2,12 @@ import React, { useRef, useLayoutEffect, useState } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { Box, useMediaQuery } from "@chakra-ui/react";
 
-const OpacityDiv = ({Component,animate = true,negativeY = true,...props}) => {
+const OpacityDiv = ({
+  Component,
+  animate = true,
+  negativeY = true,
+  ...props
+}) => {
   const [dimensions, setDimensions] = useState({
     offsetTop: 0,
     height: 0,
@@ -54,14 +59,14 @@ const OpacityDiv = ({Component,animate = true,negativeY = true,...props}) => {
       as={motion.div}
       ref={ref}
       style={{
-        opacity: animate &&  opacityAbout
+        opacity: animate && opacityAbout,
       }}
       className="opacity-div"
       w={"100vw"}
-      h={`${dimensions.height}px`}
+      h={{ base: "auto", lg: `${dimensions.height}px` }}
       overflowX={"hidden"}
-      overflowY={{base:"unset",lg:"unset"}}
-      minH={{base:'unset',lg:"100dvh"}}
+      overflowY={{ base: "unset", lg: "unset" }}
+      minH={{ base: "unset", lg: "100dvh" }}
       scrollSnapAlign={"center"}
       scrollSnapStop={"always"}
     >

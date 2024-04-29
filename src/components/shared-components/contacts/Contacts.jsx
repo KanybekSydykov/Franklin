@@ -47,7 +47,7 @@ const Contacts = ({ data, params }) => {
           {data.addresses.map((item, id) => (
             <Flex flexDirection={"column"} gap={"20px"} key={id}>
               <Text
-                fontFamily={"lora"}
+                fontFamily={"opensans"}
                 fontWeight={600}
                 fontSize={"18px"}
                 textAlign={"center"}
@@ -72,7 +72,7 @@ const Contacts = ({ data, params }) => {
           {data.phones.map((item, id) => (
             <Flex key={id} flexDirection={"column"} gap={"20px"}>
               <Text
-                fontFamily={"lora"}
+                fontFamily={"opensans"}
                 fontWeight={600}
                 fontSize={"18px"}
                 textAlign={"center"}
@@ -97,7 +97,7 @@ const Contacts = ({ data, params }) => {
           {data.emails.map((item, id) => (
             <Flex key={id} flexDirection={"column"} gap={"20px"}>
               <Text
-                fontFamily={"lora"}
+                fontFamily={"opensans"}
                 fontWeight={600}
                 fontSize={"18px"}
                 textAlign={"center"}
@@ -159,7 +159,7 @@ const Contacts = ({ data, params }) => {
           color={"#fff"}
           mt={"30px"}
         >
-          Since 2012
+          SINCE 2012
         </Text>
       </Box>
     </Container>
