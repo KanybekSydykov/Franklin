@@ -161,7 +161,7 @@ const Preview = ({ params, handlePreviewEnd }) => {
           w="100%"
           h="100%"
           position={"absolute"}
-          opacity={1}
+          opacity={0}
           bg={" linear-gradient(294.25deg, #1D1D1F 0%, #3A3B3F 143.31%)"}
         >
           <Flex
