@@ -35,6 +35,7 @@ const ProjectId = ({ data, params }) => {
         <Container
           display={"flex"}
           justifyContent={"flex-start"}
+          px={{ base: "0" ,lg:'20px'}}
           alignItems={"center"}
           w={"100%"}
           h={"66px"}
@@ -68,7 +69,7 @@ const ProjectId = ({ data, params }) => {
             </svg>
             <Text>
               {getTranslatedText("Назад в ", "Back to ")}{" "}
-              {getTranslatedText(data.duration.name_ru, data.duration.name_en)}
+              "{getTranslatedText(data.duration.name_ru, data.duration.name_en).charAt(0).toUpperCase() + getTranslatedText(data.duration.name_ru, data.duration.name_en).slice(1).toLowerCase()}"
             </Text>
           </ChakraLink>
         </Container>

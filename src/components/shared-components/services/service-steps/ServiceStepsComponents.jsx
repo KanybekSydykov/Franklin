@@ -33,10 +33,11 @@ const ServiceStepsComponents = ({ componentsArray,title }) => {
         textTransform={"uppercase"}
         position={"sticky"}
         py={'7px'}
+        px={'20px'}
         background={'transparent'}
         backdropFilter={"blur(2px)"}
         zIndex={2}
-        top={{base:'141px',lg:"181px"}}
+        top={{base:'155px',lg:"181px"}}
         className="container-title"
       >
         {componentsArray[0].params.locale === 'ru' ? title.ru : title.en}
