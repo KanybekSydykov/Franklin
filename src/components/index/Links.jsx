@@ -60,7 +60,7 @@ export default function LinkContent({ data ,params,allData,id}) {
                 fontFamily={'lora'}
   
               >
-                {locale === 'ru' ? data.title_ru : data.title_en}
+                {locale === 'ru' ? data.title_ru.toUpperCase() : data.title_en.toUpperCase()}
               </Text>
               <Text
                 fontSize={{ base: '20px', lg: '20px' }}
