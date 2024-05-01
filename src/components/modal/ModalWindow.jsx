@@ -18,13 +18,15 @@ import {
 import { motion } from "framer-motion";
 import { useParams } from "next/navigation";
 
-const ModalWindow = ({ modalProps }) => {
+const ModalWindow = ({ modalProps , isValid  }) => {
   const { isOpen, onOpen, onClose } = useDisclosure();
 
   const params = useParams();
 
   const handleButtonClick = () => {
+    if(isValid){
     onOpen();
+    }
 
     // setTimeout(() => {
     //   onClose();

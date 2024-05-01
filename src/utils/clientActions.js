@@ -14,8 +14,10 @@ export const sendForm = async (data) => {
             
             body: JSON.stringify(data)
         });
+        return res
     }
     catch (error) {
         console.error('Error:', error);
+        return error
     }
 }

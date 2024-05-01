@@ -1,16 +1,34 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { FormControl, Input, Flex, Box } from "@chakra-ui/react";
+import { motion ,useAnimate} from "framer-motion";
 import { useParams } from "next/navigation";
+import { type } from "os";
 
-const Form = ({ onNameChange, onPhoneChange, onMessageChange }) => {
+const inputAnimation = {
+  initial: {
+    x:0,
+  },
+  animate: {
+    x :[0,50,0,-50,0],
+  },
+}
+
+const Form = ({ onNameChange, onPhoneChange, onMessageChange, isValid,reset }) => {
   const params = useParams();
-
-
   const [name, setName] = useState("");
   const [phone, setPhone] = useState("");
   const [message, setMessage] = useState("");
+  const [scope, animate] = useAnimate();
+
+  const {isValidName,isValidPhone} = isValid
+
+  if(reset){
+    setName("")
+    setPhone("")
+    setMessage("")
+  }
 
   const handleNameChange = (e) => {
     const newName = e.target.value;
@@ -33,6 +51,31 @@ const Form = ({ onNameChange, onPhoneChange, onMessageChange }) => {
     onMessageChange(newMessage);
   };
 
+  useEffect(() => {
+   
+    if(scope.current !== null){
+      if(!isValidName){
+      animate('.name',{
+        x:[-5,10,-10,5,-5,0],
+        transition: {
+          duration: 0.5,
+          type: "spring",
+        }
+      })
+
+    }
+    if(!isValidPhone){
+      animate('.phone',{
+        x:[-5,10,-10,5,-5,0],
+        transition: {
+          duration: 0.5,
+          type: "spring",
+        }
+      })
+    }
+  }
+  },[isValid])
+
 
   return (
     <Flex 
@@ -40,8 +83,11 @@ const Form = ({ onNameChange, onPhoneChange, onMessageChange }) => {
     gap={"30px"}
     w={"100%"}
     maxW = {'350px'}
+    ref={scope}
     >
-      <FormControl>
+      <FormControl
+          className="name"
+      >
         <Input
           type="text"
           placeholder={`${params.locale === "ru" ? "Ваше имя" : "Your name"}`}
@@ -60,18 +106,21 @@ const Form = ({ onNameChange, onPhoneChange, onMessageChange }) => {
           color={"#fff"}
           _focus={{ outline: "none" }}
           _focusVisible={{ borderColor: "transparent" }}
-          _placeholder={{ color: "rgba(239, 239, 239, 1)"}}
+          _placeholder={{ color: isValidName ? "rgba(239, 239, 239, 1)" : "#F30000"}}
+          
 
         />
         <Box
           w={"100%"}
           h={"1px"}
           bg={
-            "linear-gradient(270deg, rgba(255, 255, 255, 0) 0%, #C2C2C2 100%)"
+            `linear-gradient(270deg, rgba(255, 255, 255, 0) 0%, ${isValidName ? "#C2C2C2" : "#F30000"} 100%)`
           }
         ></Box>
       </FormControl>
-      <FormControl >
+      <FormControl 
+      className="phone"
+      >
         <Input
           type="tel"
           placeholder={`${params.locale === "ru" ? "Ваш номер телефона или WhatsApp" : "Phone or WhatsApp number"}`}
@@ -90,19 +139,21 @@ const Form = ({ onNameChange, onPhoneChange, onMessageChange }) => {
           color={"#fff"}
           _focus={{ outline: "none" }}
           _focusVisible={{ borderColor: "transparent" }}
-          _placeholder={{ color: "rgba(239, 239, 239, 1)"}}
+          _placeholder={{ color: isValidPhone ? "rgba(239, 239, 239, 1)" : "#F30000"}}
 
 
         />
-        <Box
+               <Box
           w={"100%"}
           h={"1px"}
           bg={
-            "linear-gradient(270deg, rgba(255, 255, 255, 0) 0%, #C2C2C2 100%)"
+            `linear-gradient(270deg, rgba(255, 255, 255, 0) 0%, ${isValidPhone ? "#C2C2C2" : "#F30000"} 100%)`
           }
         ></Box>
       </FormControl>
-      <FormControl >
+      <FormControl 
+      className="message"
+      >
         <Input
           type="text"
           placeholder={`${params.locale === "ru" ? "Ваше сообщение" : "Leave comment"}`}
