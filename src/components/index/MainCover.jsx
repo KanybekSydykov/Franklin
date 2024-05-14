@@ -4,7 +4,7 @@ import Preview from "@/components/videoplayer/preview/Preview";
 import Main from "./Main";
 
 const MainCover = ({ data, params }) => {
-  const [showPreview, setShowPreview] = useState(true);
+  const [showMain, setShowMain] = useState(false);
   const [isVisited, setIsVisited] = useState(false);
 
   useEffect(() => {
@@ -18,9 +18,13 @@ const MainCover = ({ data, params }) => {
     setIsVisited(true);
   }
 
+  function handleMainVisibility() {
+    setShowMain(true);
+  }
+
   return (
     <>
-       {!isVisited && <Preview params={params} handlePreviewEnd={handlePreviewEnd} />} 
+       {!isVisited && <Preview params={params} handlePreviewEnd={handlePreviewEnd} handleMainVisibility={handleMainVisibility} />} 
         <Main zIndex={isVisited} data={data} params={params} />
 
        

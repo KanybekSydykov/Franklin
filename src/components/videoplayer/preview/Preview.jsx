@@ -8,12 +8,13 @@ import {
   Text,
   calc,
   useMediaQuery,
+  background,
 } from "@chakra-ui/react";
 import AnimatedLogo from "@/components/animation-components/AnimatedLogo";
 import Divider from "@/components/shared-components/divider/Divider";
 import Image from "next/image";
 
-const Preview = ({ params, handlePreviewEnd }) => {
+const Preview = ({ params, handlePreviewEnd, handleMainVisibility }) => {
   const [scope, animate] = useAnimate();
   const [isVisible, setIsVisible] = useState(true);
 
@@ -22,87 +23,73 @@ const Preview = ({ params, handlePreviewEnd }) => {
   const logoRef = useRef(null);
 
   if (scope.current !== null) {
+
+    console.log('starting logo animation');
     Promise.all([
-      animate(
-        "video",
-        { opacity: 0 },
-        { duration: 1, delay: 6, ease: "easeInOut" }
-      ),
       animate(
         ".logo-animation",
         { opacity: 1 },
-        { duration: 0.5, delay: 6, type: "spring" }
-      ),
-    ])
-      .then(() => {
-        return animate(
-          ".logo-animation",
-          {
-            width: 40,
-            height: 83,
-            top: mobileView[0] ? 15 : 35,
-            left: logoRef.current.offsetLeft,
-          },
-          { duration: 0.5 }
-        );
-      })
-      .then(() => {
-        return Promise.all([
+        { duration: 2, delay: 0.2, type: "spring" }
+      ).then(() => {
+        Promise.all([
+          animate(
+            ".logo-animation",
+            {
+              width: 40,
+              height: 77.43,
+              top: mobileView[0] ? 15 : 35,
+              left: logoRef.current.offsetLeft,
+            },
+            { duration: 0.8 }
+          ),
           animate(
             ".preview-component",
             { opacity: 1 },
-            { duration: 0.5, delay: 1, ease: "easeInOut" }
+            { duration: 1.5, type: "spring" }
           ),
         ]);
-      })
-      .then(() => {
-        return Promise.all([
+      }),
+    ]).then(() => {
+    console.log('starting component animation');
+        Promise.all([
+          animate(
+            ".preview-img",
+            { height: ["450px", "0"],opacity:0 },
+            { duration: 5 ,delay:2,type: "spring"}
+          ),
           animate(
             ".preview-component",
             { background: "transparent" },
-            { duration: 1, delay: 1, type: "tween" }
-          ),
-          animate(
-            ".logo-animation",
-            { opacity: 0, zIndex: -5 },
-            { duration: 0.01, delay: 1, type: "tween" }
-          ),
-          animate(
-            ".preview-header",
-            { opacity: 1 },
-            { duration: 0.5, delay: 1 }
+            { duration: 2.5,delay:2 }
           ),
           animate(
             ".preview-text",
-            { opacity: [1, 0.5, 0] },
-            { duration: 1.5, delay: 1 }
+            { opacity:  0 },
+            { duration: 1.5,delay:2}
           ),
           animate(
-            ".preview-img",
-            { height: ["450px", "0"] },
-            { duration: 1.5, delay: 1 }
-          ),
-          animate(
-            ".preview-component",
-            { zIndex: -1 },
-            { duration: 1, delay: 1, type: "tween" }
+            scope.current,
+            { background: "transparent" },
+            { duration: 2.5,delay:2}
           ),
           animate(
             ".preview-header",
             { opacity: 0 },
-            { duration: 0.5, delay: 1 }
+            { duration: 2.5, delay: 3 ,type: "spring"}
           ),
-          animate(
-            "video",
-            { zIndex: -10 },
-            { duration: 1, delay: 1.5, ease: "easeInOut" }
-          ).then(() => {
-            handlePreviewEnd();
-            setIsVisible(false);
-          }),
         ]);
-      });
+    }).then(() => {
+      handleMainVisibility();
+    setTimeout(() => {
+      handlePreviewEnd();
+      setIsVisible(false);
+    }, 5000);
+      
+    })
+
   }
+
+
 
   const preview = (
     <Box
@@ -112,6 +99,8 @@ const Preview = ({ params, handlePreviewEnd }) => {
       left={0}
       w={"100vw"}
       h={"100vh"}
+      zIndex={2}
+      bg={"linear-gradient(294.25deg, #1d1d1f 0%, #3a3b3f 143.31%)"}
     >
       <Box
         opacity={0}
@@ -123,7 +112,7 @@ const Preview = ({ params, handlePreviewEnd }) => {
         position={"absolute"}
         zIndex={5}
       >
-       <AnimatedLogo sizes='logo-preview' />
+        <AnimatedLogo sizes={true} />
       </Box>
       <Box
         as={motion.div}
@@ -136,22 +125,6 @@ const Preview = ({ params, handlePreviewEnd }) => {
         justifyContent={"center"}
         alignItems={"center"}
       >
-        <video
-          autoPlay
-          muted
-          playsInline
-          style={{
-            width: "100%",
-            height: "100%",
-            objectFit: "cover",
-            zIndex: 1,
-            position: "absolute",
-            scale: 1.2,
-          }}
-        >
-          <source src={"/preview.mp4"} type="video/mp4" />
-        </video>
-
         <Flex
           as={motion.div}
           className="preview-component"
@@ -172,7 +145,7 @@ const Preview = ({ params, handlePreviewEnd }) => {
             flexDir={"column"}
           >
             <Flex
-              h={{ base: "120px", lg: "150px" }}
+              h={{ base: "120px", lg: "151px" }}
               w={"100%"}
               flexDir={"row"}
               flexWrap={"wrap"}
@@ -189,13 +162,22 @@ const Preview = ({ params, handlePreviewEnd }) => {
                 justifyContent={{ base: "center", lg: "center" }}
                 alignItems={{ base: "center", lg: "flex-start" }}
                 flexGrow={1}
+                pos={"relative"}
               >
-                <Box ref={logoRef} className="header-logo" opacity={0}>
+                <Box
+                  ref={logoRef}
+                  pos={"absolute"}
+                  position={"absolute"}
+                  top={{ base: "20px", lg: "35px" }}
+                  left={"calc(50% - 20px)"}
+                  className="header-logo"
+                  opacity={0}
+                >
                   <AnimatedLogo />
                 </Box>
               </Flex>
 
-              <Box w={"100%"}>
+              <Box w={"100%"} pos={"absolute"} left={0} bottom={0} h={"1px"}>
                 <Divider />
               </Box>
             </Flex>
@@ -215,6 +197,8 @@ const Preview = ({ params, handlePreviewEnd }) => {
                 fontWeight={400}
                 lineHeight={"38.4px"}
                 className="preview-text"
+                opacity={1}
+                textTransform={"uppercase"}
               >
                 {params.locale === "ru"
                   ? "Дизайн который восхищает"
@@ -230,6 +214,8 @@ const Preview = ({ params, handlePreviewEnd }) => {
             position={"absolute"}
             left={0}
             bottom={0}
+            opacity={1}
+            
           >
             <Box w={"100%"} h={"100%"} maxH={"100%"} position={"relative"}>
               <Image

@@ -85,8 +85,8 @@ const Header = ({data}) => {
           <ChakraLink
             as={Link}
             position={"absolute"}
-            top={{ base: "20px", lg: "calc(50% - 40px)" }}
-            left={"calc(50% - 15px)"}
+            top={{ base: "20px", lg: "35px" }}
+            left={"calc(50% - 20px)"}
             href={`/${path.startsWith('/ru') ? 'ru' : 'en'}/`}
           >
             <AnimatedLogo/>
