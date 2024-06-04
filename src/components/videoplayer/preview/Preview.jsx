@@ -19,8 +19,11 @@ const Preview = ({ params, handlePreviewEnd, handleMainVisibility }) => {
   const [isVisible, setIsVisible] = useState(true);
 
   const mobileView = useMediaQuery("(max-width: 992px)");
+  console.log(mobileView);
 
   const logoRef = useRef(null);
+
+  console.dir(logoRef.current);
 
   if (scope.current !== null) {
 
@@ -35,10 +38,10 @@ const Preview = ({ params, handlePreviewEnd, handleMainVisibility }) => {
           animate(
             ".logo-animation",
             {
-              width: 40,
-              height: 77.43,
-              top: mobileView[0] ? 15 : 35,
-              left: logoRef.current.offsetLeft,
+              width: mobileView[0] ? 30 :  40,
+              height: mobileView[0] ? 58 : 77.43,
+              top: mobileView[0] ? 16 : 35,
+              left:  logoRef.current.offsetLeft,
             },
             { duration: 0.8 }
           ),
@@ -169,7 +172,7 @@ const Preview = ({ params, handlePreviewEnd, handleMainVisibility }) => {
                   pos={"absolute"}
                   position={"absolute"}
                   top={{ base: "20px", lg: "35px" }}
-                  left={"calc(50% - 20px)"}
+                  left={{base:"calc(50% - 15px)",lg:"calc(50% - 20px)"}}
                   className="header-logo"
                   opacity={0}
                 >
