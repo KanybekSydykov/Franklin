@@ -15,7 +15,7 @@ const inputAnimation = {
   },
 }
 
-const Form = ({ onNameChange, onPhoneChange, onMessageChange, isValid,reset }) => {
+const Form = ({ onNameChange, onPhoneChange, onMessageChange, isValid,reset,handleResetOver }) => {
   const params = useParams();
   const [name, setName] = useState("");
   const [phone, setPhone] = useState("");
@@ -24,11 +24,16 @@ const Form = ({ onNameChange, onPhoneChange, onMessageChange, isValid,reset }) =
 
   const {isValidName,isValidPhone} = isValid
 
+
+
+ useEffect(() => {
   if(reset){
     setName("")
     setPhone("")
     setMessage("")
+    handleResetOver()
   }
+  },[reset])
 
   const handleNameChange = (e) => {
     const newName = e.target.value;
@@ -74,7 +79,7 @@ const Form = ({ onNameChange, onPhoneChange, onMessageChange, isValid,reset }) =
       })
     }
   }
-  },[isValid])
+  },[isValidName,isValidPhone])
 
 
   return (

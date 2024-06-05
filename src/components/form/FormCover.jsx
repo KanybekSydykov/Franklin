@@ -29,7 +29,7 @@ const FormCover = ({ modalProps }) => {
 
   const handleMessageChange = (message) => {
     setData((prev) => ({ ...prev, message }));
-    setIsValid(true)
+    setIsValidForm(true)
   };
 
   const handleSubmit = async (e) => {
@@ -40,13 +40,11 @@ const FormCover = ({ modalProps }) => {
       setIsValidName(false)
       setIsValidPhone(false)
       setIsValidForm(false)
-      console.log("Name and phone number are required.");
       return;
     }
 
     // If inputs are valid, submit the form
     if(isValidName && isValidPhone){
-      setIsValidForm(true)
     const response = await sendForm(data);
     if (response.ok ) {
       setReset(true)
@@ -54,6 +52,10 @@ const FormCover = ({ modalProps }) => {
     // Handle response as needed
     }
   };
+
+  function handleResetOver(){
+    setReset(false)
+  }
 
   return (
     <Flex
@@ -72,6 +74,7 @@ const FormCover = ({ modalProps }) => {
         onMessageChange={handleMessageChange}
         isValid={{isValidName,isValidPhone}}
         reset={reset}
+        handleResetOver={handleResetOver}
       />
 
       <Flex onClick={handleSubmit}>

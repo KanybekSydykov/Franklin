@@ -48,7 +48,7 @@ const QuoteSection = ({ UpArrowComponent, scrollTop, data, params,index }) => {
   }
 
   useEffect(() => {
-    console.log(isInView);
+
   }, [isInView])
 
   return (

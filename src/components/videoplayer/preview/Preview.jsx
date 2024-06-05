@@ -19,15 +19,14 @@ const Preview = ({ params, handlePreviewEnd, handleMainVisibility }) => {
   const [isVisible, setIsVisible] = useState(true);
 
   const mobileView = useMediaQuery("(max-width: 992px)");
-  console.log(mobileView);
+ 
 
   const logoRef = useRef(null);
 
-  console.dir(logoRef.current);
+
 
   if (scope.current !== null) {
 
-    console.log('starting logo animation');
     Promise.all([
       animate(
         ".logo-animation",
@@ -53,7 +52,6 @@ const Preview = ({ params, handlePreviewEnd, handleMainVisibility }) => {
         ]);
       }),
     ]).then(() => {
-    console.log('starting component animation');
         Promise.all([
           animate(
             ".preview-img",

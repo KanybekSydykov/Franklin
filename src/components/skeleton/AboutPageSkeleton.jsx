@@ -4,10 +4,10 @@ import { Box,Skeleton, SkeletonCircle, SkeletonText, Container, Flex } from "@ch
 const AboutPageSkeleton = () => {
   return (
     <>
-    <Container
+     <Container
       maxW={"container.xl"}
       minH={"100vh"}
-      w={"100%"}
+      w={"100vw"}
       display={"flex"}
       justifyContent={"center"}
       alignItems={"center"}
@@ -15,34 +15,25 @@ const AboutPageSkeleton = () => {
     >
 
         <Flex
-          direction={{ base: "column", lg: "row-reverse" }}
+          direction={{ base: "column", lg: "row" }}
           gap={"30px"}
           w={'100%'}
+          height={'100%'}
           p={"30px 20px 60px"}
         >
-          <Flex
-            direction={"column"}
-            justifyContent={"center"}
-            alignItems={"center"}
-            gap={{ base: "32px", lg: "40px" }}
-          >
+          <Box
+          w={"100%"}
+          h={"auto"}
+          flexGrow={1}
+          maxH={{ base: "475px", lg: "537px" }}
+          height={{ base: "475px", lg: "537px" }}
+          width={{ base: "100%", lg: "402px" }}
+          minW={{ base: "100%", lg: "402px" }}
+        >
+          {/* <Skeleton height='100%' width='100%' /> */}
+          <SkeletonText noOfLines={23} spacing='4' skeletonHeight='2' />
 
-            
-                <Skeleton w={'100%'} height={'20px'}/>
-
-
-            <Flex
-              direction={"column"}
-              justifyContent={"center"}
-              alignItems={"center"}
-              maxW={'620px'}
-            >
-              <Flex direction={"column"} gap={"24px"}>
-              <Skeleton w={'100%'} maxW={'620px'} height={'320px'} />
-              
-              </Flex>
-            </Flex>
-          </Flex>
+        </Box>
 
           <Box
           w={"100%"}

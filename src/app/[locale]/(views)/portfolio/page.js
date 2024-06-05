@@ -18,9 +18,9 @@ const Page = async ({ params }) => {
   // Render Portfolio component with data
   return (
     <>
-     <Suspense fallback={<Loading />}>
+
      <Portfolio data={data['portfolio_page']} params={params} />
-    </Suspense>
+
        
     </>
   );

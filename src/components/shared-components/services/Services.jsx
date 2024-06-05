@@ -6,6 +6,7 @@ import {
   Flex,
   Grid,
   Container,
+  Skeleton,
 } from "@chakra-ui/react";
 import { motion } from "framer-motion";
 import ServiceItem from "./ServiceItem";
@@ -85,6 +86,7 @@ const Services = ({ data, params }) => {
         </Text>
       </Flex>
     </Container>
+
   );
 };
 

@@ -7,7 +7,8 @@ const PortfolioSkeleton = () => {
   return (
     <>
     <Container
-      maxW={"container.xl"}
+         maxW={{ lg: "990px", xl: "container.xl" }}
+
       h={{ base: "auto", md: "100%" }}
       minH={{ base: "auto", md: "100vh" }}
       display={"flex"}

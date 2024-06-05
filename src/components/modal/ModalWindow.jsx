@@ -28,9 +28,9 @@ const ModalWindow = ({ modalProps , isValid  }) => {
     onOpen();
     }
 
-    // setTimeout(() => {
-    //   onClose();
-    // }, 3000);
+    setTimeout(() => {
+      onClose();
+    }, 3000);
   };
 
   return (
