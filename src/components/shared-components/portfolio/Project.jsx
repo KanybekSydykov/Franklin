@@ -178,7 +178,6 @@ const Project = ({ data,params }) => {
                       alignItems={"flex-end"}
                       color={"white"}
                       fontFamily={'opensans'}
-                      fontWeight={600}
                     >
                       {project.title}
                     </Flex>

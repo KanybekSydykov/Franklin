@@ -114,7 +114,7 @@ const ProjectId = ({ data, params }) => {
               </Text>
               <Text
                 fontFamily={"opensans"}
-                fontWeight={{ base: 700, lg: 500 }}
+                fontWeight={600}
                 fontSize={{ base: "18px", lg: "24px" }}
                 color={"#fff"}
                 textAlign={"start"}
