@@ -30,7 +30,6 @@ const ServiceStepsComponents = ({ componentsArray,title }) => {
         textAlign={"center"}
         color={"#fff"}
         lineHeight={"24px"}
-        textTransform={"uppercase"}
         position={"sticky"}
         py={'7px'}
         px={'20px'}

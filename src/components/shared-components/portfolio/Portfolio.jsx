@@ -151,7 +151,6 @@ const Portfolio = ({ data, params }) => {
                     color={"#fff"}
                     textAlign={"center"}
                     lineHeight={{ base: "17px", lg: "22px" }}
-                    textTransform={"uppercase"}
                     mt={{ base: "16px", lg: "20px" }}
                     width={{ base: "auto", lg: "100%" }}
                     mx={"auto"}

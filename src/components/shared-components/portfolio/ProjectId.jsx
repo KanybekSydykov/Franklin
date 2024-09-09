@@ -117,7 +117,6 @@ const ProjectId = ({ data, params }) => {
                 fontSize={{ base: "18px", lg: "24px" }}
                 color={"#fff"}
                 textAlign={"start"}
-                textTransform={"uppercase"}
               >
                 {getTranslatedText(data.title_ru, data.title_en)}
               </Text>

@@ -199,7 +199,6 @@ const Preview = ({ params, handlePreviewEnd, handleMainVisibility }) => {
                 lineHeight={"38.4px"}
                 className="preview-text"
                 opacity={1}
-                textTransform={"uppercase"}
               >
                 {params.locale === "ru"
                   ? "Дизайн который восхищает"

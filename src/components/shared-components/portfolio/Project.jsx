@@ -20,6 +20,9 @@ const Project = ({ data,params }) => {
   const pathName = usePathname();
   const {locale} = params
 
+  console.log(data);
+  
+
   const isMobile = useMediaQuery("(max-width: 768px)");
 
   const overlay = {
@@ -153,7 +156,7 @@ const Project = ({ data,params }) => {
                     <AspectRatio ratio={1}>
 
                     <Image
-                      src={project.images[0].image}
+                      src={project.images.length ? project.images[0].image : ''}
                       alt="portfolio-1"
                       fill
                     />
