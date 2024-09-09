@@ -103,6 +103,7 @@ const ProjectId = ({ data, params }) => {
                 fontFamily={"opensans"}
                 fontWeight={400}
                 fontSize={"16px"}
+                className="title-head"
                 color={"#CBCBCB"}
                 textAlign={"start"}
               >
@@ -112,7 +113,7 @@ const ProjectId = ({ data, params }) => {
                 )}
               </Text>
               <Text
-                fontFamily={"lora"}
+                fontFamily={"opensans"}
                 fontWeight={{ base: 700, lg: 500 }}
                 fontSize={{ base: "18px", lg: "24px" }}
                 color={"#fff"}

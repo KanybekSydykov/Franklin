@@ -30,13 +30,17 @@ const Project = ({ data,params }) => {
       opacity: 0,
       background: "rgba(0,0,0,.5)",
       zIndex: 0,
-      fontSize: "8px",
+      scale:.8,
+      y:10,
+      fontSize: "16px",
     },
     animate: {
       opacity: 1,
       background: "rgba(0,0,0,.5)",
       zIndex: 3,
-      fontSize: "20px",
+      y:0,
+      scale:1,
+      fontSize: "16px",
     },
   };
 
@@ -171,7 +175,7 @@ const Project = ({ data,params }) => {
                       h={"100%"}
                       textAlign={"center"}
                       justifyContent={"center"}
-                      alignItems={"center"}
+                      alignItems={"flex-end"}
                       color={"white"}
                       fontFamily={'opensans'}
                       fontWeight={600}
