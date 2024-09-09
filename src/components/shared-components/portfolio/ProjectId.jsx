@@ -131,7 +131,7 @@ const ProjectId = ({ data, params }) => {
                 lineHeight={"20px"}
                 color={"#fff"}
               >
-                {params.locale === "ru" ? "Локация" : "Location"}
+                {params.locale === "ru" ? "Площадь и Стиль" : "Area and Style"}
               </Text>
               <Text
                 fontFamily={"opensans"}

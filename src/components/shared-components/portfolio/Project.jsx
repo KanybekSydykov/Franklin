@@ -32,7 +32,7 @@ const Project = ({ data,params }) => {
       zIndex: 0,
       scale:.8,
       y:10,
-      fontSize: "16px",
+      fontSize: "12px",
     },
     animate: {
       opacity: 1,
@@ -40,7 +40,7 @@ const Project = ({ data,params }) => {
       zIndex: 3,
       y:0,
       scale:1,
-      fontSize: "16px",
+      fontSize: "12px",
     },
   };
 
