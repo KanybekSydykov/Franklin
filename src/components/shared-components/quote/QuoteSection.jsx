@@ -44,7 +44,7 @@ const QuoteSection = ({ UpArrowComponent, scrollTop, data, params,index }) => {
     let description =
       params.locale === "ru" ? data.description_ru : data.description_en;
 
-    return description.replace(/<\/?p>/g, "").replace(/<br\s*\/?>/gi, "");
+    return description?.replace(/<\/?p>/g, "").replace(/<br\s*\/?>/gi, "");
   }
 
   useEffect(() => {
